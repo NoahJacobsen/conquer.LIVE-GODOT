@@ -1,12 +1,12 @@
 extends Node2D
 
-var monster_name
-var stats = {
-	"atk" : null, # Attack
-	"def" : null, # Defence
-	"spd" : null, # Speed
-	"lck" : null, # Luck
-	"hpm" : null  # Max health
+export(String) var monster_name
+export(Dictionary) var stats = {
+	"atk" : 0, # Attack
+	"def" : 0, # Defence
+	"spd" : 0, # Speed
+	"lck" : 0, # Luck
+	"hpm" : 0 # Max health
 }
 var health        # Current health
 
@@ -24,8 +24,5 @@ func full_heal():
 	health = stats["hpm"]
 
 func _die():
-	pass
-	
-func _draw_sprite():
 	pass
 
