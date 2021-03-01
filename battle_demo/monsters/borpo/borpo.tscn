@@ -5,3 +5,11 @@
 
 [node name="Borpo" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+monster_name = "borpo"
+stats = {
+"atk": 1,
+"def": 1,
+"hpm": 1,
+"lck": 1,
+"spd": 1
+}
