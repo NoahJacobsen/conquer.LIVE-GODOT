@@ -1,0 +1,4187 @@
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script async="" src="https://www.google-analytics.com/analytics.js"></script><script>if(window.location.protocol == "file:" && navigator.userAgent.indexOf('Electron') === -1) {document.write('<base href="https://hextml.playest.net/" />');}</script>
+<title>Map The Blank</title>
+<link rel="stylesheet" type="text/css" id="mainstyle" href="includes/hextml.css?v872941154ce85adcf960c5cb41ec88e81d6dd3d9">
+<link rel="stylesheet" type="text/css" id="mapstyle" href="includes/map.css?v872941154ce85adcf960c5cb41ec88e81d6dd3d9">
+<link rel="preconnect" href="https://accounts.google.com">
+<link rel="preconnect" href="https://apis.google.com">
+<link rel="preload" href="includes/hextml.css?v872941154ce85adcf960c5cb41ec88e81d6dd3d9" as="style">
+<link rel="preload" href="includes/map.css?v872941154ce85adcf960c5cb41ec88e81d6dd3d9" as="style">
+
+<link rel="shortcut icon" type="image/png" href="includes/images/favicon.png">
+<link rel="apple-touch-icon" href="includes/images/apple-touch-icon.png">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Online hexmap maker and campaign manager. For DnD or any other tabletop RPG. Maps can be shared in almost real-time with anyone.">
+
+<meta property="og:title" content="An online mapmaker - Hextml">
+<meta property="og:description" content="Online hexmap maker and campaign manager for DnD and other RPG.">
+<meta property="og:image" content="https://hextml.playest.net/preview.jpg">
+<meta property="og:url" content="https://hextml.playest.net">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="app">
+<meta name="twitter:site" content="@playest">
+<meta name="twitter:creator" content="@playest">
+
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="521171258594-inp0d33scqcnt0sjb2dctob05tf8stot.apps.googleusercontent.com">
+
+<style>
+body.darkmode {
+background-color: #111;
+}
+
+.splashing .header,
+.splashing .left-panel,
+.splashing .main,
+.splashing #togetherjs-dock,
+.splashing .hovermap {
+display: none;
+}
+
+.splashscreen .logo {
+position: absolute;
+}
+
+.splashing .splashscreen {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+}
+
+.splashscreen .rotate {
+-webkit-animation: spin 4s linear infinite;
+-moz-animation: spin 4s linear infinite;
+animation: spin 4s linear infinite;
+background: url("includes/images/loadingfg.png");
+width: 348px;
+height: 348px;
+}
+
+.darkmode .splashscreen .rotate {
+background: url("includes/images/loadingfg_dark.png");
+}
+
+.splashscreen .ldlogo {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+@-moz-keyframes spin {
+100% {
+-moz-transform: rotate(360deg);
+}
+}
+
+@-webkit-keyframes spin {
+100% {
+-webkit-transform: rotate(360deg);
+}
+}
+
+@keyframes spin {
+100% {
+-webkit-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
+</style>
+
+<style id="resourcesStyle">
+
+
+/**/
+
+</style>
+<style id="resourcesBgColor">
+
+
+/**/
+
+</style>
+<style id="styleVar">
+:root { --hex-space: 2px; --ratio: 0.25; }
+
+</style>
+<script>(function t(){!function(){function h(n,i,a){i=i||{};var r=n.ownerDocument||n,s=r.createEvent?r.createEvent("CustomEvent"):r.createEventObject();for(var e in s.initCustomEvent&&s.initCustomEvent(i.type,!!i.bubbles,!!i.cancelable,i.detail),i)s[e]=i[e];return setTimeout(function(){try{n.dispatchEvent?n.dispatchEvent(s):n.fireEvent("on"+i.type,r.createEventObject())}catch(o){var e=n["listen"+i.type];if(e)for(var t=0;t<e.length;++t)try{e[t].call(n,s)}catch(o){}}a()},0),this}function f(e,t,n){function i(e,t){try{var n=e.ownerDocument;if(n.createEventObject){var i=n.createEventObject();e.fireEvent("on"+t,i)}else(i=n.createEvent("HTMLEvents")).initEvent(t,!0,!0),e.dispatchEvent(i)}catch(a){}}var a=!0,r=e.className&&-1!=e.className.indexOf("fancified");if(window.jQuery){var s=window.jQuery(e);try{if(s.selectBoxIt)s.selectBoxIt("selectOption",s.val());else if(s.data("chosen")||s.chosen)s.trigger("chosen:updated").trigger("liszt:updated");else if(s.data("chooserElement"))s.trigger("change");else if(s.fancySelect)s.get("fancySelect").select("value",s.val());else if(s.selectBox)s.selectBox("value",s.val());else if(s.selectric)s.selectric("refresh");else if(s.coreUISelect){var o=s.data("coreUISelect");o.isSelectShow=!0,o.changeDropdownData(),o.isSelectShow=!1}else if(s.data("myJSPulldownObject"))s.data("myJSPulldownObject").setToValue(s.val());else if(s.fancyfields)s.setVal(s.val());else if(s.data("select2"));else if(s.data("selectize"))a=!1,s.data("selectize").setValue(s.val());else if(s.hasClass("fancified"))s.trigger("update");else if(s.selectmenu){var l=s.val();try{s.selectmenu("value",s[0].options[0].value)}catch(c){}s.selectmenu("value",l)}else s.hasClass("select-hidden")&&s.next("div.select-styled").length&&s.next("div.select-styled").next(".select-options").length&&(ulElement=s.next("div.select-styled").next(".select-options"),liElement=ulElement.find("li[rel='"+s.val()+"']"),liElement.click());s.trigger("change")}catch(c){}}a&&(r&&i(e,"update"),i(e,"change"),i(e,"blur")),n()}function r(t,n,i,a){var r=t.value;h(t,{type:"keydown",keyCode:n,which:n,charCode:n,bubbles:!0},function(){h(t,{type:"keypress",keyCode:n,which:n,charCode:n,bubbles:!0},function(){setTimeout(function(){var e=t.value;r==e&&(t.value=i),h(t,{type:"input",keyCode:n,which:n,charCode:n,bubbles:!0},function(){h(t,{type:"keyup",keyCode:n,which:n,charCode:n,bubbles:!0},function(){a()})})},1)})})}function s(e,t,n,i){if(t&&""!=t){var a=t.charCodeAt(0);n+=t.charAt(0),r(e,a,n,function(){s(e,t.substring(1),n,i)})}else i()}function l(e,t,n){if(window.abineTriggerChangeInProgress)setTimeout(function(){l(e,t,n)},100);else{e.setAttribute("mmautofilling","now"),e.focus(),e.value=t;var i=!0;window.abineTriggerChangeInProgress=!0;try{if(window.jQuery){var a=window.jQuery(e);a.data("rawMaskFn")||a.mask||a.CardPhoneFormatting?a.focus().val(t).trigger("input").trigger("paste"):a.next(".inner").find(".options").length&&(i=!1,a.next(".inner").find(".options").find("span").each(function(){var e=$(this);-1<$(e).html().toLowerCase().indexOf(t)&&$(e).click()}))}}catch(o){}e.defaultValue=t;try{var r=e._valueTracker;r&&r.setValue(t+"old")}catch(o){}try{e.__preactattr_&&e.__preactattr_.onChange&&(e.value=t,e.__preactattr_.onChange({target:e}),e.click())}catch(o){}try{var s=new Event("input",{bubbles:!0,cancelable:!0,data:t});s.simulated=!0,e.dispatchEvent(s)}catch(o){}try{h(e,{type:"keyup",keyCode:38,which:38,charCode:38,bubbles:!0},function(){})}catch(o){}i?h(e,{type:"change"},function(){h(e,{type:"blur"},function(){window.abineTriggerChangeInProgress=!1,e.removeAttribute("mmautofilling"),n()})}):(e.removeAttribute("mmautofilling"),window.abineTriggerChangeInProgress=!1,n())}}function t(e,t,n){try{e.ownerDocument.defaultView.focus()}catch(i){}h(e,{type:"focus"},function(){h(e,{type:"click"},function(){s(e,t+"\n","",function(){l(e,t,function(){h(document,{type:"abineFilled"},function(){n()})})})})})}function i(e,t,n,i){var a=/[\s]+/g,r=(t||"").toLowerCase().replace(a,""),s=function(){h(document,{type:"abineFilled"},function(){i()})},o=!1,l=!1,c=e.getElementsByTagName("option");if(c&&0<c.length){for(var d=-1,u=0;u<c.length;u++){var m=(c[u].text||"").toLowerCase().replace(a,"");if((c[u].getAttribute("value")||"").toLowerCase().replace(a,"")==r||m==r){c[u].selected||(o=!0,c[u].selected=!0),l=!0;break}-1==d&&-1!=m.indexOf(r)&&(d=u)}l||-1==d||n||c[d].selected||(o=!0,l=c[d].selected=!0)}e.setAttribute("abineFillResponse",l),o?f(e,t,s):s()}function a(){if(0<(t=document.getElementsByClassName("abineFillTarget")).length)return t[0];for(var e=0;e<frames.length;e++)try{var t;if(0<(t=frames[e].document.getElementsByClassName("abineFillTarget")).length)return t[0]}catch(o){}return null}function e(){var n=document.createElement("div");n.id="abineFillElement","undefined"!=typeof paypal&&n.setAttribute("data-paypal","1"),"undefined"!=typeof OffAmazonPayments&&n.setAttribute("data-amazon","1"),"undefined"!=typeof MasterPass&&n.setAttribute("data-masterpass","1"),document.documentElement.appendChild(n),n.addEventListener("fill",function(){var e=a();e?t(e,n.getAttribute("value"),function(){}):h(document,{type:"abineFilled"},function(){})},!1),n.addEventListener("fillSelect",function(){var e=a();e?i(e,n.getAttribute("value"),!!n.getAttribute("skipPartial"),function(){}):h(document,{type:"abineFilled"},function(){})}),n.addEventListener("triggerChange",function(){var e=a(),t=n.getAttribute("value");e&&(e.nodeName.match(/select/i)?f(e,t,function(){}):l(e,t,function(){}))})}e()}()})()</script></head>
+
+<body class="truefow hideText darkmode paintbrush">
+
+<script>
+if(localStorage && localStorage.getItem("darkmode") === "false") {document.body.classList.toggle("darkmode", false);}
+if(window.location.search.indexOf("nosplash") !== -1) {document.body.classList.remove("splashing");}
+var url = window.location.pathname;
+var basename = url.substring(url.lastIndexOf('/') + 1);
+if(basename == "view.html") {
+console.log("entering play(er)mode");
+dqs("body").classList.add("fullMap");
+dqs("body").classList.add("playerMode");
+if(window.location.protocol != "file:") {
+//dqs("body").classList.add("fullMapLock");
+}
+}
+</script>
+
+<div class="splashscreen">
+<div class="ldlogo">
+<img class="logo" src="includes/images/hextml_logo.png">
+<div class="rotate"></div>
+</div>
+<div class="ldmsg">Unloading stuff...</div>
+</div>
+
+<div class="context-menu" oncontextmenu="return false;" style="display: none;"><div class="menu-label">(13, 13)</div><div class="menu-block"><div class="menu-item">Insert hex in col</div><div class="menu-item">Insert hex in row</div></div><div class="menu-block"><div class="menu-item">Add column</div><div class="menu-item">Add row</div></div><div class="menu-block"><div class="menu-item">Delete hex in col</div><div class="menu-item">Delete hex in row</div></div><div class="menu-block"><div class="menu-item">Delete column</div><div class="menu-item">Delete row</div></div><div class="menu-block"><div class="menu-item">Copy hex</div><div class="menu-item">Paste hex</div><div class="menu-item">Clear hex</div></div><div class="menu-item for-viewers">Edit player's notes</div></div>
+
+<div class="settings overpanel" style="display:none;" id="abId0.07832557013168284">
+<div class="panel" id="abId0.5479355744844019">
+<button class="close" onclick="ibus.hideSettings(this, event);" title="Close">×</button>
+
+<div class="titleLine panelLine" id="abId0.6670840600240439" abineguid="766CFC0A8FD446D982CDAB83A4D7EA11">
+<input type="text" class="mapTitle" value="Title" oninput="ibus.updateTitleEvent(this, event);">
+</div>
+
+<div class="editor panelItem">
+
+<p class="help"></p>
+
+<div class="centered line">
+<div class="mapSizeManager">
+<div>
+<button onclick="ibus.rmRowTop(this, event);">-</button>
+<button onclick="ibus.addRowTop(this, event);">+</button>
+</div>
+
+<div class="left">
+<button onclick="ibus.addColLeft(this, event);">+</button><br>
+<button onclick="ibus.rmColLeft(this, event);">-</button>
+</div>
+<img src="includes/images/map.png" alt="map">
+<div class="right">
+<button onclick="ibus.addColRight(this, event);">+</button><br>
+<button onclick="ibus.rmColRight(this, event);">-</button>
+</div>
+
+<div>
+<button onclick="ibus.rmRowBottom(this, event);">-</button>
+<button onclick="ibus.addRowBottom(this, event);">+</button>
+</div>
+</div>
+</div>
+
+<div class="changeMapSize smartline eq" id="abId0.051066433606359096">
+<div id="abId0.2031738712039325" abineguid="90DC1CD4DD024E4B8AD884A74410196E">
+<span>Height: </span>
+<span id="abId0.7785782369323483"><input type="text" id="mapHeight"></span>
+<span>Width: </span>
+<span id="abId0.8750759888592704"><input type="text" id="mapWidth"></span>
+</div>
+<button class="eq" onclick="ibus.changeMapSize(this, event);">set size</button>
+</div>
+<div class="autoupdatemapsize">
+<span><input type="checkbox" id="autoupdatemapsize" checked="checked" onchange="ibus.changeAdaptiveSizeState(this, event);"></span>
+<label for="autoupdatemapsize"><span>Adaptive size?</span></label>
+</div>
+<div class="smartline eq">
+<button class="clear-button" onclick="ibus.clearMap(this, event);">Clear</button>
+<button class="random-map-button" onclick="ibus.makeRandomMap(this, event);">Generate</button>
+</div>
+</div><!-- /editor -->
+
+<div class="bgpanel">
+<p class="help">If you added a background image to the map in the "resource" tab you can change the opacity of the tile and move the background.</p>
+
+<div class="smartline">
+<span class="fixed">Opacity: </span><input type="range" oninput="ibus.updateOpacityOfMapEvent(this, event);">
+</div>
+
+<div class="smartline eq">
+<span>Background horizontal offset (px):</span>
+<input id="bgxoffset" step="any" type="number" oninput="ibus.updateMapBgEvent(this, event);">
+</div>
+<div class="smartline eq">
+<span>Background vertical offset (px):</span>
+<input id="bgyoffset" step="any" type="number" oninput="ibus.updateMapBgEvent(this, event);">
+</div>
+<div class="smartline eq">
+<span>Background zoom (%):</span>
+<input id="bgzoom" step="any" type="number" oninput="ibus.updateMapBgEvent(this, event);">
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="localSaves overpanel" style="display: none;">
+<div class="panel">
+<button class="close" onclick="ibus.hideLocalSavesPanel(this, event);" title="Close">×</button>
+<button onclick="ibus.localSaveNow(this, event);">Save now</button> |
+<button onclick="ibus.enableLocalSave(this, event);">Enable</button> /
+<button onclick="ibus.disableLocalSave(this, event);">Disable</button> <span>auto save</span>
+<h1>Local saves</h1>
+<table><tr data-guid="last">
+<td class="md-name">Map The Blank <span class="badge">autosave</span></td>
+<td class="md-at"> at </td>
+<td class="md-lastlocalsave">2021-02-03 9:01:13 p.m.</td>
+<td class="size">0.12 MB</td>
+<td><button onclick="ibus.loadLocalSave(this, event);">load</button></td>
+<td><button onclick="ibus.deleteLocalSave(this, event);">delete</button></td>
+</tr></table>
+</div>
+</div>
+
+<div class="panel4 resource overpanel" style="display:none;" id="abId0.32424292162785817">
+<div class="panel" id="abId0.9682509002253905">
+<button class="close" onclick="ibus.hideResourcePanel(this, event);" title="Close">×</button>
+
+<div class="help"> Here you can upload resources (one by one or multiples at the same time). <ul> <li>An image resource can be an image that you will be able to use as terrain or as a background for the map (try the "opacity" feature). The text field is for the background color/</li> <li>A text resource is a map that can be imported.</li> </ul> </div>
+
+<div class="panelItem hline">
+<button class="double" onclick="ibus.uploadResource(this, event);">Upload Resources</button>
+<input type="file" id="fileimport" enctype="multipart/form-data" multiple="multiple">
+<input type="file" id="fileimport2" enctype="multipart/form-data" multiple="multiple">
+</div>
+<div class="panelItem hline" id="abId0.2822222247156163" abineguid="4DF4390F71AA41298B4CD1B598F37543">
+<input id="external-resource-url" type="text" placeholder="URL of external resource">
+<button onclick="ibus.addExternalResource(this, event);">Add</button>
+</div>
+
+<p class="hline">Need help to find the code for a background color? <input type="color"></p>
+
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'dataResourceList');">-</button> Images</h2>
+<div class="panelItem resourceList dataResourceList">
+
+</div>
+
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'textResourceList');">-</button> Others</h2>
+<div class="panelItem resourceList textResourceList"></div>
+
+</div>
+</div>
+
+<div class="hovermap titleLine">
+<button onclick="ibus.toggleFullMapMode(this, event);" title="Quit fullscreen">
+<div class="i i-smallscreen"></div>
+</button>
+</div>
+
+<div class="page">
+
+<div class="header" id="abId0.534494941095209">
+<div class="smartline" id="abId0.5968407066796068">
+<button class="small ham-menu" onclick="ibus.toggleHeader(this, event);"></button>
+<a class="small title logo" href="/"></a>
+
+<div id="cmd-palette" class="small cmd-palette cmd-palette--hide" abineguid="2D964490F28B4C648EA77B618B4FBE22">
+<input type="text" placeholder="Type what you want to do here.">
+<ul><li data-category="" data-name="Change color mode" selected="">
+            <span class="title">Change color mode</span>
+            <span class="description">Switch between color mode and black &amp; white mode.</span>
+            </li><li data-category="" data-name="Change hex spacing">
+            <span class="title">Change hex spacing</span>
+            <span class="description">Change the size of the spacing between the hexes.</span>
+            </li><li data-category="" data-name="Change language">
+            <span class="title">Change language</span>
+            <span class="description">Choose the language of the interface</span>
+            </li><li data-category="" data-name="Change shape of hexagons">
+            <span class="title">Change shape of hexagons</span>
+            <span class="description">Squares or hexes vertically aligned or hexes horizontally aligned.</span>
+            </li><li data-category="" data-name="Clear all icons">
+            <span class="title">Clear all icons</span>
+            <span class="description">on current map</span>
+            </li><li data-category="" data-name="Clear all rivers">
+            <span class="title">Clear all rivers</span>
+            <span class="description">on current map</span>
+            </li><li data-category="" data-name="Clear all roads">
+            <span class="title">Clear all roads</span>
+            <span class="description">on current map</span>
+            </li><li data-category="" data-name="Clear all secret notes">
+            <span class="title">Clear all secret notes</span>
+            <span class="description">on current map</span>
+            </li><li data-category="" data-name="Clear all texts">
+            <span class="title">Clear all texts</span>
+            <span class="description">on current map</span>
+            </li><li data-category="" data-name="Clear map">
+            <span class="title">Clear map</span>
+            <span class="description">Erase all hexes on the current map</span>
+            </li><li data-category="" data-name="Create new map">
+            <span class="title">Create new map</span>
+            <span class="description">Make a new submap that you can switch to.</span>
+            </li><li data-category="" data-name="Dark mode">
+            <span class="title">Dark mode</span>
+            <span class="description"></span>
+            </li><li data-category="" data-name="Draw something">
+            <span class="title">Draw something</span>
+            <span class="description">Get everything ready to draw some mountains onto the map. Just click on some hexagons after that.</span>
+            </li><li data-category="" data-name="Enable/disable fog of war">
+            <span class="title">Enable/disable fog of war</span>
+            <span class="description">Hide or show hexagons with fog of war.</span>
+            </li><li data-category="" data-name="Fog of War everywhere">
+            <span class="title">Fog of War everywhere</span>
+            <span class="description">Put fog of war on every hex of this map.</span>
+            </li><li data-category="" data-name="Fullscreen">
+            <span class="title">Fullscreen</span>
+            <span class="description">Hides everything except the map.</span>
+            </li><li data-category="" data-name="Generate random map">
+            <span class="title">Generate random map</span>
+            <span class="description"></span>
+            </li><li data-category="" data-name="Generate share link">
+            <span class="title">Generate share link</span>
+            <span class="description">Generate a link that will recreate the map for whomever click on it. Won't work on big maps.</span>
+            </li><li data-category="" data-name="Insert text">
+            <span class="title">Insert text</span>
+            <span class="description">Insert text into an hexagon.</span>
+            </li><li data-category="" data-name="Light mode">
+            <span class="title">Light mode</span>
+            <span class="description"></span>
+            </li><li data-category="" data-name="Open">
+            <span class="title">Open</span>
+            <span class="description">Import a map file that has been saved.</span>
+            </li><li data-category="" data-name="Paint fog of war">
+            <span class="title">Paint fog of war</span>
+            <span class="description">Draw fog of war onto the map. Enable fog of war to try it.</span>
+            </li><li data-category="" data-name="Report a bug">
+            <span class="title">Report a bug</span>
+            <span class="description">Explain your bug and send the current state to the developpers.</span>
+            </li><li data-category="" data-name="Resize map">
+            <span class="title">Resize map</span>
+            <span class="description">Open the setting panel.</span>
+            </li><li data-category="" data-name="Save">
+            <span class="title">Save</span>
+            <span class="description">Save everything as one file that can be reopened later.</span>
+            </li><li data-category="" data-name="Save as an image">
+            <span class="title">Save as an image</span>
+            <span class="description">Export the current map as an image. It can take a long time.</span>
+            </li><li data-category="" data-name="See all hexagons">
+            <span class="title">See all hexagons</span>
+            <span class="description">Arrange all hexagons that contains something into a list</span>
+            </li><li data-category="" data-name="Show/Hide borders">
+            <span class="title">Show/Hide borders</span>
+            <span class="description"></span>
+            </li><li data-category="" data-name="Show/hide coordinates">
+            <span class="title">Show/hide coordinates</span>
+            <span class="description">Show or hide the coordinates of every hexagon.</span>
+            </li><li data-category="" data-name="Show/hide grid">
+            <span class="title">Show/hide grid</span>
+            <span class="description">Show or hide the grid</span>
+            </li><li data-category="" data-name="Show/hide notes">
+            <span class="title">Show/hide notes</span>
+            <span class="description">Display "..." on hexes with a secret note.</span>
+            </li><li data-category="" data-name="Show/hide text and icons">
+            <span class="title">Show/hide text and icons</span>
+            <span class="description">Show or hide the texts and icons on the current map.</span>
+            </li><li data-category="" data-name="Start the tutorial">
+            <span class="title">Start the tutorial</span>
+            <span class="description">Open the tutorial in a new window.</span>
+            </li><li data-category="" data-name="Use custom tiles">
+            <span class="title">Use custom tiles</span>
+            <span class="description">Open the resource panel to import custom tiles and icons.</span>
+            </li><li data-category="" data-name="Zoom">
+            <span class="title">Zoom</span>
+            <span class="description">Change the size of hexagons.</span>
+            </li><li data-category="Collaboration" data-name="Everybody else into viewer mode">
+            <span class="title">Collaboration: Everybody else into viewer mode</span>
+            <span class="description">They won't be able to edit the map.</span>
+            </li><li data-category="Collaboration" data-name="Everybody into edit mode">
+            <span class="title">Collaboration: Everybody into edit mode</span>
+            <span class="description">You can edit the map together</span>
+            </li><li data-category="Collaboration" data-name="Force a synchronisation based on your map">
+            <span class="title">Collaboration: Force a synchronisation based on your map</span>
+            <span class="description">In case there is a fault in the synchronization process.</span>
+            </li><li data-category="Collaboration" data-name="Share the map">
+            <span class="title">Collaboration: Share the map</span>
+            <span class="description">Will enable collaborative mode.</span>
+            </li><li data-category="Collaboration" data-name="Show/hide coordinates">
+            <span class="title">Collaboration: Show/hide coordinates</span>
+            <span class="description"></span>
+            </li><li data-category="Collaboration" data-name="Show/hide fog of war">
+            <span class="title">Collaboration: Show/hide fog of war</span>
+            <span class="description"></span>
+            </li><li data-category="Collaboration" data-name="Show/hide grid">
+            <span class="title">Collaboration: Show/hide grid</span>
+            <span class="description"></span>
+            </li><li data-category="Collaboration" data-name="Show/hide text and icons">
+            <span class="title">Collaboration: Show/hide text and icons</span>
+            <span class="description"></span>
+            </li><li data-category="Collaboration" data-name="Synchronize view">
+            <span class="title">Collaboration: Synchronize view</span>
+            <span class="description">All collaborative viewers will see the currently selected hexagon.</span>
+            </li><li data-category="Debug" data-name="Fast replay">
+            <span class="title">Debug: Fast replay</span>
+            <span class="description">Replay every event evey 0.2s</span>
+            </li><li data-category="Debug" data-name="Force local save">
+            <span class="title">Debug: Force local save</span>
+            <span class="description">Now.</span>
+            </li><li data-category="Debug" data-name="Force saving on server">
+            <span class="title">Debug: Force saving on server</span>
+            <span class="description">Now.</span>
+            </li><li data-category="Debug" data-name="Prepare for replay">
+            <span class="title">Debug: Prepare for replay</span>
+            <span class="description">Configure everything right before doing a replay</span>
+            </li><li data-category="Debug" data-name="Slow replay">
+            <span class="title">Debug: Slow replay</span>
+            <span class="description">Replay every event evey 1s</span>
+            </li><li data-category="Debug" data-name="Start local save">
+            <span class="title">Debug: Start local save</span>
+            <span class="description"></span>
+            </li><li data-category="Debug" data-name="Start saving on server">
+            <span class="title">Debug: Start saving on server</span>
+            <span class="description"></span>
+            </li><li data-category="Debug" data-name="Stop local save">
+            <span class="title">Debug: Stop local save</span>
+            <span class="description"></span>
+            </li><li data-category="Debug" data-name="Stop saving on server">
+            <span class="title">Debug: Stop saving on server</span>
+            <span class="description"></span>
+            </li></ul></div>
+
+<div class="small sep1">|</div>
+
+<div class="small lang-block">
+<button class="langbtn small" title="Change language" onclick="ibus.openLangMenu(this, event);">
+<div class="i i-language"></div>
+</button>
+
+<div class="localMenu langMenu">
+<button title="de" onclick="ibus.changeLanguage(this, event, 'de-de');">German</button><br>
+<button title="it" onclick="ibus.changeLanguage(this, event, 'it-it');">Italian</button><br>
+<button title="nl" onclick="ibus.changeLanguage(this, event, 'nl-nl');">Dutch</button><br>
+<button title="no" onclick="ibus.changeLanguage(this, event, 'no-no');">Norwegian</button><br>
+<button title="fr" onclick="ibus.changeLanguage(this, event, 'fr-fr');">French</button><br>
+<button title="en" onclick="ibus.changeLanguage(this, event, 'en-us');">English</button><br>
+<button title="en" onclick="ibus.changeLanguage(this, event, 'ru-ru');">Russian</button><br>
+<button title="i18n" onclick="ibus.changeLanguage(this, event, 'i18n');">i18n</button><br>
+<a href="/translate.html">Help translation</a>
+</div>
+</div>
+
+<button class="small primary export-button" onclick="ibus.exportProjectToHTMLEvent(this, event);" title="Export">
+<div class="i i-export"></div>
+</button>
+
+<button class="small primary import-button" onclick="ibus.importFile(this, event);" title="Open">
+<div class="i i-open"></div>
+</button>
+
+<button class="small primary export-image-button" id="exportToImage2" onclick="ibus.exportCurrentMapToImageEvent(this, event);" title="Export to image">
+<div class="i i-image"></div>
+</button>
+
+<div class="small sep2">|</div>
+
+<button class="small undo-btn" onclick="ibus.undoEvent(this, event);" title="Undo">
+<div class="i i-undo"></div>
+</button>
+<button class="small redo-btn" onclick="ibus.redoEvent(this, event);" title="Redo">
+<div class="i i-redo"></div>
+</button>
+
+<div class="small sep3">|</div>
+<div class="other-maps">
+<a class="small" href="/tutorial5.html" target="_blank">Tutorial</a><br>
+<a class="small" href="/blank.html">Blank</a>
+<a class="small" href="/templates.html" target="_blank">...</a>
+</div>
+
+<a class="small title patron" href="https://www.patreon.com/playest" onclick="ibus.linkClicked(this, event);">
+<img alt="become a patron" src="includes/images/patron.png">
+<span>Become<br>A PATRON</span>
+</a>
+
+<div class="small sep4">|</div>
+
+<span class="small"><span class="save">Saves</span>: <a href="/why.html#neversave" target="_blank" title="Why does it says &amp;quot;never&amp;quot;?">?</a></span>
+
+<table class="small">
+<tbody>
+<tr>
+<th class="saveserver">
+<span id="projecturl2">server</span>
+<span class="notify"></span>
+</th>
+<th class="savelocal">
+<a class="doLocalSavesButton" href="#" title="Start saving" onclick="ibus.startLocalSave(this, event);">local</a>
+<a style="display: none;" class="showLocalSavesButton" href="#" title="Show saves" onclick="ibus.showLocalSavesPanel(this, event);">local</a>
+<span class="notify"></span>
+</th>
+</tr>
+<tr>
+<td class="saveserver">
+<div class="small">
+<span id="lastServerSave">never</span>
+<span id="lastServerSaveAgo">never</span>
+</div>
+</td>
+<td class="savelocal">
+<div class="small">
+<span id="lastSave">never</span>
+<span id="lastSaveAgo">never</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="var"></div>
+
+<!--<div class="g-signin2 small" data-onsuccess="onSignIn" data-theme="dark"></div>-->
+
+<div id="googleSigninButton" class="small" onclick="ibus.accountSignIn(this, event);">
+<div style="height:36px;width:120px;" class="abcRioButton abcRioButtonBlue">
+<div class="abcRioButtonContentWrapper">
+<div class="abcRioButtonIcon" style="padding:8px">
+<div style="width:18px;height:18px;" class="abcRioButtonSvgImageWithFallback abcRioButtonIconImage abcRioButtonIconImage18">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 48 48" class="abcRioButtonSvg">
+<g>
+<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+<path fill="none" d="M0 0h48v48H0z"></path>
+</g>
+</svg>
+</div>
+</div>
+<span style="font-size:13px;line-height:34px;" class="abcRioButtonContents">
+<span>Sign In</span>
+</span>
+</div>
+</div>
+</div>
+
+<div id="googleSignoutButton" class="small" style="display: none;">
+<div style="height:36px;width:120px;" class="abcRioButton abcRioButtonBlue" onclick="ibus.accountSignOut(this, event);">
+<div class="abcRioButtonContentWrapper">
+<div class="abcRioButtonIcon" style="padding:8px">
+<div style="width:18px;height:18px;" class="abcRioButtonSvgImageWithFallback abcRioButtonIconImage abcRioButtonIconImage18">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 48 48" class="abcRioButtonSvg">
+<g>
+<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+<path fill="none" d="M0 0h48v48H0z"></path>
+</g>
+</svg>
+</div>
+</div>
+<span style="font-size:13px;line-height:34px;" class="abcRioButtonContents">
+<span>Sign Out</span>
+</span>
+</div>
+</div>
+</div>
+
+<label class="switch small" id="darkmode-label">
+<input type="checkbox" id="darkmode-btn" onchange="ibus.toggleDarkMode(this, event);">
+<span class="slider round"></span>
+</label>
+
+<form target="_blank" action="bug.php" method="POST" class="small" id="bugreport">
+<button type="button" class="bug-report em-high" onclick="ibus.reportBug(this, event);" title="Report a bug">
+<div class="i"></div>
+</button>
+<input type="hidden" class="bugdata" name="bugdata" value="">
+</form>
+
+</div>
+
+</div><!-- /header -->
+
+<div class="main" id="abId0.7851353050365437">
+
+<div class="popup">
+<div class="messageBox">
+<button class="close" onclick="ibus.closeMessageBox(this, event);" title="Close">×</button>
+<div class="message">
+</div>
+<div class="wait">
+<img src="includes/images/loading2.gif" alt="wait">
+</div>
+</div>
+</div>
+
+<div class="left-panel">
+<div class="doubleButton collaboration-button">
+<button class="b1" title="Collaboration" onclick="enableCollaboration(this);">
+<div class="i i-collaboration"></div>
+</button>
+<button class="b2" title="Collaboration options" onclick="ibus.showAdvancedCollaboration(this, event);">˅</button>
+<div class="localMenu viewersMenu hideText truefow">
+<button class="small hexNumberButton" title="Show/hide hex number for viewers" onclick="ibus.toggleHexNumberForViewers(this, event);">
+<div class="i i-coords">
+
+</div>
+</button><button class="small hexBorderButton" title="Show/hide hex border for viewers" onclick="ibus.toggleHexBorderForViewers(this, event);">
+<div class="i i-border"></div>
+</button>
+<button class="small fowButton" title="En/disable fog of war for viewers" onclick="ibus.toggleFogOfWarForViewers(this, event);">
+<div class="i i-fogeye"></div>
+</button>
+<button class="small hidetextButton" title="Show/hide text and icons for viewers" onclick="ibus.toggleTextVisibilityForViewers(this, event);">
+<div class="i i-hidetext"></div>
+</button>
+<button class="small viewerModeButton" title="Go into edit mode and put others into viewer mode" onclick="ibus.editAndOtherIntoViewer(this, event);">
+<div class="i i-leading"></div>
+</button>
+<button class="small editModeButton" title="Set everybody into edit mode" onclick="ibus.everybodyIntoEditMode(this, event);">
+<div class="i i-groupwork"></div>
+</button>
+<button class="small forceSync" title="Send your exact version of the map to every collaborator" onclick="ibus.forceSync(this, event);">
+<div class="i i-sharing"></div>
+</button>
+<a target="_blank" href="/why.html#collaboration">Help</a>
+</div>
+</div>
+
+<button class="small syncview" title="Sync view" onclick="ibus.syncView(this, event);">
+<div class="i i-group-leader"></div>
+</button>
+
+<hr class="sep1">
+
+<button class="small ibtn orientation-button" title="Change grid shape" onclick="ibus.switchColRowMode(this, event);">
+<div class="i i-toggle_colrow2"></div>
+</button>
+<button class="small hexNumberButton" title="Show/hide hex number" onclick="ibus.toggleHexNumber(this, event);">
+<div class="i i-coords"></div>
+</button>
+
+
+<div class="doubleButton hexBorderButton">
+<button class="b1" title="Show/hide hex border" onclick="ibus.toggleHexBorder(this, event);">
+<div class="i i-border"></div>
+</button>
+<button class="b2" title="Hex spacing" onclick="ibus.hexSpaceMenu(this, event);">˅</button>
+<div class="localMenu hexSpaceMenu">
+<input type="number" class="hexSpace" oninput="ibus.changeHexSpace(this, event);">
+</div>
+</div>
+
+<button class="small fowButton" title="En/disable fog of war" onclick="ibus.toggleFogOfWar(this, event);">
+<div class="i i-fogeye"></div>
+</button>
+<button class="small hidetextButton" title="Show/hide text and icons" onclick="ibus.toggleTextVisibility(this, event);">
+<div class="i i-hidetext"></div>
+</button>
+<button class="small hideNotesButton" title="Show/hide note markers" onclick="ibus.toggleNotesMarker(this, event);">
+<div class="i i-notepad"></div>
+</button>
+<button class="bwbutton small" title="Black and white/color mode" onclick="ibus.toggleBlackWhiteMode(this, event);">
+<div class="i i-color2wb"></div>
+</button>
+
+<hr class="sep2">
+
+<div class="doubleButton zoomlevel-button">
+<button class="b1" title="Reset zoom" onclick="ibus.resetZoom(this, event);">
+<div class="i i-zoom_inout"></div>
+</button>
+<button class="b2 " title="Zoom level" onclick="ibus.zoomMenu(this, event);">˅</button>
+<div class="localMenu zoomMenu">
+<input type="number" class="zoomLevel" oninput="ibus.changeZoom(this, event);">
+</div>
+</div>
+
+<button class="outlinebutton small" title="Outline mode" onclick="ibus.toggleOutlineModeEvent(this, event);">
+<div class="i i-checklist"></div>
+</button>
+
+</div>
+
+<div class="hexBlockSample" data-version="1530855544" style="display: none;" id="abId0.39750720293464525">
+
+<div class="hexBlock nocontent">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2">
+</div>
+</div>
+</div>
+</div>
+
+<article class="hexline"></article>
+
+<div class="overmap hexincol">
+<section class="map" data-version="1.0" data-height="0" data-width="0" data-title="New map">
+</section>
+</div>
+
+<div class="oneResource dataresource" id="abId0.15479305987127" abineguid="B6D868F658F8423F9351D730112357E1">
+<div class="resource"></div>
+<span class="name" style="display: none;"></span>
+<button class="asbackground" onclick="ibus.setBackgroundOfMap(this, event);">background</button>
+<input type="text" class="color half" value="transparent" oninput="ibus.setBgColorOfResource(this, event);">
+<span class="size"></span>
+<button class="auto" onclick="ibus.deleteResource(this, event);">×</button>
+</div>
+
+<div class="oneResource textresource">
+<div class="resource" style="display: none;"></div>
+<span class="name"></span>
+<button class="double" onclick="ibus.addIntoSubmaps(this, event);">Add into submaps</button>
+<button class="double" onclick="ibus.importResources(this, event);">Import resources</button>
+<button class="double" onclick="ibus.overridProject(this, event);">Override</button>
+<span class="size"></span>
+<button class="auto" onclick="ibus.deleteResource(this, event);">×</button>
+</div>
+
+<div class="submap">
+<button class="up" onclick="">↑</button>
+<button class="down" onclick="">↓</button>
+<button class="del" onclick="ibus.deleteSubmap(this, event);">×</button>
+<a class="title" href=""></a>
+</div>
+
+<div class="terrainSample">
+<button onclick="ibus.selectColor(this, event, 'terrain');" class="beach" title="beach"></button>
+</div>
+
+
+<table class="localSavesSample">
+<tbody>
+<tr>
+<td class="md-name">metadata.name</td>
+<td class="md-at"> at </td>
+<td class="md-lastlocalsave">metadata.lastlocalsave</td>
+<td class="size">size</td>
+<td><button onclick="ibus.loadLocalSave(this, event);">load</button></td>
+<td><button onclick="ibus.deleteLocalSave(this, event);">delete</button></td>
+</tr>
+</tbody>
+</table>
+
+<div class="trashSample">
+<div class="trash dragdrop"></div>
+</div>
+
+</div><!-- /hexBlockSample -->
+
+<div class="announceBox" style="display: none;">
+<button class="close" onclick="ibus.closeAnnounce(this, event);" title="Close">×</button>
+<div class="announce"><p style="text-align:center;">
+Version 9 is here! Help us on <a href="https://www.patreon.com/playest" target="_blank" onclick="logEvent('outlink', 'click', this.href);">Patreon</a><br>
+
+Check the <a href="https://www.patreon.com/playest" target="_blank" onclick="logEvent('outlink', 'click', this.href);">change log</a> and try <strong>right cliking</strong> on the map.<br>
+
+Follow us on <a href="https://twitter.com/hextml" target="_blank" onclick="logEvent('outlink', 'click', this.href);">twitter</a>, <a href="https://www.facebook.com/hextml" target="_blank" onclick="logEvent('outlink', 'click', this.href);">facebook</a> or <a href="https://playest.itch.io/hextml" target="_blank" onclick="logEvent('outlink', 'click', this.href);">Itch</a> for news and tutorials!<br>
+
+(<a href="https://oldhextml.playest.net" target="_blank" onclick="logEvent('outlink', 'click', this.href);">previous version</a>)
+</p>
+</div>
+</div>
+
+<div style="display:none;" id="credits">
+<p><a href="https://hextml.playest.net">Hextml</a> is an online hex map maker, world building tool, campaign manager and virtual tabletop software for your RPG. Use it in your DnD (or any other tabletop RPG) campaign to build a world for you and your players. It uses the best of HTML5 to let you make beautiful hexagonal maps. You can share a map live with your players by enabling the collaborative mode (with or without fog of war).
+</p>
+
+<p>Ask quetions about the software on <a href="https://playest.net/blog/leafs/Hextml">my blog</a> or <a href="https://www.reddit.com/r/rpg/comments/77tklz/a_new_version_of_hextml_the_webbased_hexagonal/?ref=share&amp;ref_source=link">in this reddit post</a>, I visit it quite often.</p>
+
+<p>Hextml is made by <a href="http://playest.net">playest</a>.</p>
+
+<p><a href="/credits.html">Other credits</a></p>
+
+<p class="creditsToggle"><a href="#" onclick="ibus.hideCredits(this, event);">Hide credits</a></p>
+
+</div>
+
+<div class="project" data-guid="0a209f2d-8a6e-b1b7-c724-a1949654ebed" data-lastfilesave="2021-02-05T20:30:08.765Z"></div>
+
+
+<div class="middle">
+<div class="mapcontainer">
+<div class="overmap hexincol show selected"><section class="map wshift hshift" data-version="1" data-uid="0" data-height="22" data-width="21" data-title="Map The Blank"><article class="hexline" data-y="0"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="1"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="2"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="3"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="4"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="5"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="6"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="7"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="8"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="9"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="10"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 jungle">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="11"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="12"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="13"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock" data-x="1" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 beach"></div></div></div>
+</div>
+<div class="hexBlock" data-x="2" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 beach"></div></div></div>
+</div>
+<div class="hexBlock" data-x="3" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 evergreen"></div></div></div>
+</div>
+<div class="hexBlock" data-x="4" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="5" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="6" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+<div class="hexBlock" data-x="7" data-y="4">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+
+
+<div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 desert">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="14"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock" data-x="1" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="2" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="3" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="4" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+<div class="hexBlock" data-x="5" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+<div class="hexBlock" data-x="6" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+<div class="hexBlock" data-x="7" data-y="5">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 evergreen-heavy"></div></div></div>
+</div>
+
+
+<div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="15"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock" data-x="1" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="2" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="3" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="4" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains-snow"></div></div></div>
+</div>
+<div class="hexBlock" data-x="5" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains-snow"></div></div></div>
+</div>
+<div class="hexBlock" data-x="6" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+<div class="hexBlock" data-x="7" data-y="6">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+
+
+<div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="16"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock" data-x="1" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="2" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="3" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="4" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="5" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 ocean"></div></div></div>
+</div>
+<div class="hexBlock" data-x="6" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 beach"></div></div></div>
+</div>
+<div class="hexBlock" data-x="7" data-y="7">
+<div class="hexagon hexagon2"><div class="hexagon-in1"><div class="hexagon-in2 mountains"></div></div></div>
+</div>
+
+
+<div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains-snow">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 mountains">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="17"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen-heavy">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="18"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 evergreen">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="19"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 beach">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article><article class="hexline" data-y="20"><div class="hexBlock nocontent" data-x="0">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="1">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="2">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="3">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="4">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="5">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="6">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="7">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="8">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="9">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="10">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="11">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="12">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="13">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="14">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="15">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="16">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="17">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="18">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="19">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div><div class="hexBlock nocontent" data-x="20">
+<div class="hexagon hexagon2">
+<div class="hexagon-in1">
+<div class="hexagon-in2 ocean">
+</div>
+</div>
+</div>
+</div></article></section></div>
+
+</div>
+<div class="bottom-panel">
+<div class="edit-status">
+<button class="close small" onclick="ibus.closeBottomPanel(this, event);" title="Close">×</button>
+<button class="edit-hex-text" onclick="ibus.startEditHexText(this, event);">Text</button>
+<button class="edit-secret-notes" onclick="ibus.startEditSecretNotes(this, event);">Secret notes</button>
+<button class="edit-viewers-notes" onclick="ibus.startEditViewersNotes(this, event);">Players notes</button>
+<div class="label">Editing <span class="edit-target">...</span></div>
+</div>
+<div id="mp-editor"></div>
+</div>
+</div>
+
+<div id="mainpanel">
+
+<div class="titleLine panelLine">
+<button title="GM mode" onclick="ibus.togglePlayingMode(this, event);">
+<div class="i i-d20"></div>
+</button>
+
+<button class="mapSettings" onclick="ibus.showSettings(this, event);" title="Map settings">
+<div class="i i-settings"></div>
+</button>
+
+<button class="resources-button" onclick="ibus.showResources(this, event);" title="Resources">
+<div class="i i-resources"></div>
+</button>
+
+<button class="fullscreen-button" title="Full screen" onclick="ibus.toggleFullMapMode(this, event);">
+<div class="i i-fullscreen"></div>
+</button>
+</div>
+
+<div class="playmode-tools">
+<button onclick="ibus.switchTool(this, event, 'select');" title="SELECT" class="selectTool">
+<div class="i i-cursor"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'paintbrush'); ibus.selectColor(this, event, 'fow');" title="PAINT_FOW" class="selectTool">
+<div class="i i-paintbrush"></div><div class="i i-fog"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'paintbrush'); ibus.selectColor(this, event, 'rmfow');" title="PAINT_NOFOW" class="selectTool">
+<div class="i i-paintbrush"></div><div class="i i-rmfog"></div>
+</button>
+</div>
+
+<div class="panelSelector smartline eq nsp">
+<button class="show terrains" onclick="ibus.showPanel(this, event, 'terrains');">Terrains</button>
+<button class="hex" onclick="ibus.showPanel(this, event, 'hex');"><span>Hex</span><span class="hexindicator"></span></button>
+<button style="display: none;" onclick="ibus.showPanel(this, event, 'maps');">Maps</button>
+<button style="display: none;" onclick="ibus.showPanel(this, event, 'resources');">Resources</button>
+<button class="submaps" onclick="ibus.showPanel(this, event, 'submaps');">Submaps</button>
+</div>
+
+<div class="panels">
+
+<div class="subpanel panel1 show">
+<div class="tools buttonPanel panelItem">
+<button onclick="ibus.switchTool(this, event, 'select');" title="Select mode" class="selectTool">
+<div class="i i-cursor"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'paintbrush');" title="Paintbrush" class="paintbrushTool selected">
+<div class="i i-paintbrush"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'bucket');" title="Bucket fill" class="bucketTool">
+<div class="i i-bucket"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'stamp');" title="Stamp" class="stampTool">
+<div class="i i-stamp"></div>
+</button>
+
+<button onclick="ibus.switchTool(this, event, 'river');" title="Draw river" class="riverTool">
+<div class="i i-river"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'rmRiver');" title="Remove river" class="rmRiverTool">
+<div class="i i-river-remove"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'road');" title="Draw road" class="roadTool">
+<div class="i i-road"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'rmRoad');" title="Remove road" class="rmRoadTool">
+<div class="i i-road-remove"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'border');" title="Add/Remove border" class="borderTool">
+<div class="i i-inside-border"></div>
+</button>
+<button onclick="ibus.switchTool(this, event, 'rotate');" title="Rotate" class="rotateTool">
+<div class="i i-rotate"></div>
+</button>
+</div>
+
+<div class="allterrains">
+
+<div class="terrain-zone common-tiles">
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'terrains');">-</button><button class="pin" onclick="ibus.pin(this, event);">
+<div class="i pin-unpin"></div>
+</button> Common</h2>
+<div class="terrains buttonPanel panelItem">
+<div class="help">Paint the map with those textures.</div>
+<div class="items">
+<button onclick="ibus.selectColor(this, event, 'terrain');" class="empty" title="empty">∅</button>
+
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="beach" class=""><div class="beach"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="brokenlands"><div class="brokenlands"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="cactus-heavy" class=""><div class="cactus-heavy"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="cactus" class=""><div class="cactus"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="desert" class=""><div class="desert"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="desert-rocky"><div class="desert-rocky"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="dunes"><div class="dunes"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="evergreen-heavy" class=""><div class="evergreen-heavy"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="evergreen-hills"><div class="evergreen-hills"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="evergreen-mountains"><div class="evergreen-mountains"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="evergreen" class=""><div class="evergreen"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="forested-hills" class=""><div class="forested-hills"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="forested-mountains"><div class="forested-mountains"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="forest-heavy"><div class="forest-heavy"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="forest"><div class="forest"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="grassland" class=""><div class="grassland"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="grass"><div class="grass"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="hills"><div class="hills"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="jungle-hills"><div class="jungle-hills"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="jungle" class=""><div class="jungle"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="marsh"><div class="marsh"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="mountains" class=""><div class="mountains"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="mountains-snow" class="selected"><div class="mountains-snow"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="ocean" class=""><div class="ocean"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="sea"><div class="sea"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="swamp"><div class="swamp"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="volcano"><div class="volcano"></div></button>
+
+<button title="fog of war" class="fow" onclick="ibus.selectColor(this, event, 'fow');">
+<div class="i i-fog"></div>
+</button>
+<button title="remove fog of war" class="fow" onclick="ibus.selectColor(this, event, 'rmfow');">
+<div class="i i-rmfog"></div>
+</button>
+</div>
+</div> <!-- /terrains -->
+</div>
+
+<div class="terrain-zone symbols-tiles">
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'icons');">+</button><button class="pin" onclick="ibus.pin(this, event);">
+<div class="i pin-unpin"></div>
+</button>Symbols</h2>
+<div class="iconPanel panelItem buttonPanel hide">
+<div class="help">Painting those with the stamp tool. You can move them between hexes by draging them. Drag them outside the map to remove them.</div>
+<div class="items">
+<button title="axe" onclick="paintColorSelect(this, 'icon')"><div class="axe"></div></button>
+<button title="bear" onclick="paintColorSelect(this, 'icon')"><div class="bear"></div></button>
+<button title="bell" onclick="paintColorSelect(this, 'icon')"><div class="bell"></div></button>
+<button title="bigcity" onclick="paintColorSelect(this, 'icon')"><div class="bigcity"></div></button>
+<button title="cloudiness" onclick="paintColorSelect(this, 'icon')"><div class="cloudiness"></div></button>
+<button title="coat of arms" onclick="paintColorSelect(this, 'icon')"><div class="coat-of-arms"></div></button>
+<button title="dragon" onclick="paintColorSelect(this, 'icon')"><div class="dragon"></div></button>
+<button title="gear" onclick="paintColorSelect(this, 'icon')"><div class="gear"></div></button>
+<button title="green thingy" onclick="paintColorSelect(this, 'icon')"><div class="green-thingy"></div></button>
+<button title="heart" onclick="paintColorSelect(this, 'icon')"><div class="heart"></div></button>
+<button title="home" onclick="paintColorSelect(this, 'icon')"><div class="home"></div></button>
+<button title="hood" onclick="paintColorSelect(this, 'icon')"><div class="hood"></div></button>
+<button title="information" onclick="paintColorSelect(this, 'icon')"><div class="information"></div></button>
+<button title="levelmeup" onclick="paintColorSelect(this, 'icon')"><div class="levelmeup"></div></button>
+<button title="lion" onclick="paintColorSelect(this, 'icon')"><div class="lion"></div></button>
+<button title="lock" onclick="paintColorSelect(this, 'icon')"><div class="lock"></div></button>
+<button title="lodash" onclick="paintColorSelect(this, 'icon')"><div class="lodash"></div></button>
+<button title="pirates" onclick="paintColorSelect(this, 'icon')"><div class="pirates"></div></button>
+<button title="question" onclick="paintColorSelect(this, 'icon')"><div class="question"></div></button>
+<button title="rain" onclick="paintColorSelect(this, 'icon')"><div class="rain"></div></button>
+<button title="shield sword axe" onclick="paintColorSelect(this, 'icon')"><div class="shield-sword-axe"></div></button>
+<button title="sorcery" onclick="paintColorSelect(this, 'icon')"><div class="sorcery"></div></button>
+<button title="star emblem" onclick="paintColorSelect(this, 'icon')"><div class="star-emblem"></div></button>
+<button title="sword" onclick="paintColorSelect(this, 'icon')"><div class="sword"></div></button>
+<button title="target" onclick="paintColorSelect(this, 'icon')"><div class="target"></div></button>
+<button title="temple" onclick="paintColorSelect(this, 'icon')"><div class="temple"></div></button>
+<button title="village" onclick="paintColorSelect(this, 'icon')"><div class="village"></div></button>
+<button title="waterfall" onclick="paintColorSelect(this, 'icon')"><div class="waterfall"></div></button>
+<button title="water" onclick="paintColorSelect(this, 'icon')"><div class="water"></div></button>
+
+</div>
+</div>
+</div>
+
+<div class="terrain-zone colors-tiles">
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'colors');">+</button><button class="pin" onclick="ibus.pin(this, event);">
+<div class="i pin-unpin"></div>
+</button> Colors</h2>
+<div class="colors buttonPanel panelItem hide">
+<div class="help">Paint the background of hexes. It will override the normal color.</div>
+<div class="items">
+<button id="bgChoosenColor" class="color" style="background-color: #FF0000;" onclick="ibus.selectColor(this, event, 'color');"></button>
+<input onchange="ibus.customBgColorPickedEvent(this, event);" id="bgColorPicker" type="color" value="#ff0000">
+<button class="palette" onclick="ibus.customBgColorClicked(this, event);">
+<div class="i i-palette"></div>
+</button>
+<button title="empty background" style="background-color: rgba(0,0,0,0);" class="color" onclick="ibus.selectColor(this, event, 'color');">∅</button>
+<button class="color" style="background-color: #95bf43;" onclick="ibus.selectColor(this, event, 'color');"></button>
+<button class="color" style="background-color: #e3c33a;" onclick="ibus.selectColor(this, event, 'color');"></button>
+<button class="color" style="background-color: #83bed0;" onclick="ibus.selectColor(this, event, 'color');"></button>
+<button class="color" style="background-color: #949d9a;" onclick="ibus.selectColor(this, event, 'color');"></button>
+<button class="color" style="background-color: #cc2628;" onclick="ibus.selectColor(this, event, 'color');"></button>
+<br>
+</div>
+</div> <!-- /colors -->
+</div>
+
+<div class="terrain-zone custom-tiles">
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'customTerrains');">+</button><button class="pin" onclick="ibus.pin(this, event);">
+<div class="i pin-unpin"></div>
+</button> Custom</h2>
+<div class="customTerrains buttonPanel panelItem">
+<div class="help">Import images with the "+" button and use them anywhere.</div>
+<div class="items">
+<div class="btn dragResource" data-from="terrain" onclick="ibus.addResourceAsTerrain(this, event);" title="drag or click to add a custom terrain">+</div>
+</div>
+</div> <!-- /custom -->
+</div>
+
+<div class="terrain-zone town-tiles">
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'townTerrains');">+</button><button class="pin" onclick="ibus.pin(this, event);">
+<div class="i pin-unpin"></div>
+</button> Town</h2>
+<div class="townTerrains buttonPanel panelItem hide">
+<div class="help">These tiles are better used with square grid. Change the grid’s shape if you need to.</div>
+<div class="items">
+
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="env_01"><div class="env_01"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="env_02"><div class="env_02"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="env_03"><div class="env_03"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="env_04"><div class="env_04"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="env_10"><div class="env_10"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="env_16"><div class="env_16"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="struct_16"><div class="struct_16"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="struct_17"><div class="struct_17"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="struct_18"><div class="struct_18"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="struct_19"><div class="struct_19"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="struct_20"><div class="struct_20"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="struct_21"><div class="struct_21"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_01"><div class="tile_01"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_02"><div class="tile_02"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_08"><div class="tile_08"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_09"><div class="tile_09"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_10"><div class="tile_10"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_11"><div class="tile_11"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_12"><div class="tile_12"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_13"><div class="tile_13"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_14"><div class="tile_14"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_15"><div class="tile_15"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_16"><div class="tile_16"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_22"><div class="tile_22"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_23"><div class="tile_23"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_24"><div class="tile_24"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_25"><div class="tile_25"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_26"><div class="tile_26"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_27"><div class="tile_27"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_28"><div class="tile_28"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_29"><div class="tile_29"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_30"><div class="tile_30"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_36"><div class="tile_36"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_37"><div class="tile_37"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_38"><div class="tile_38"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_39"><div class="tile_39"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_40"><div class="tile_40"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tile_58"><div class="tile_58"></div></button>
+
+</div>
+</div> <!-- /city -->
+</div>
+
+<div class="terrain-zone dungeon-tiles">
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'dungeonTerrains');">+</button><button class="pin" onclick="ibus.pin(this, event);">
+<div class="i pin-unpin"></div>
+</button> Dungeon</h2>
+<div class="dungeonTerrains buttonPanel panelItem hide">
+<div class="help">These tiles are better used with a square grid. Change the grid’s shape if you need to.</div>
+<div class="items">
+
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="bog_green0"><div class="bog_green0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="cobble_blood1"><div class="cobble_blood1"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="crystal_floor0"><div class="crystal_floor0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="dirt0"><div class="dirt0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="dirt_full"><div class="dirt_full"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="dngn_enter_dis"><div class="dngn_enter_dis"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="dngn_entrance"><div class="dngn_entrance"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="dngn_portal"><div class="dngn_portal"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="floor_nerves0"><div class="floor_nerves0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="floor_sand_stone0"><div class="floor_sand_stone0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="floor_vines0"><div class="floor_vines0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="floor_vines5"><div class="floor_vines5"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="grey_dirt0"><div class="grey_dirt0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="hive0"><div class="hive0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="ice0"><div class="ice0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="lair0"><div class="lair0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="lava0"><div class="lava0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="marble_floor1"><div class="marble_floor1"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="pebble_brown0"><div class="pebble_brown0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="sandstone_floor7"><div class="sandstone_floor7"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="snake0"><div class="snake0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="stone2_brown0"><div class="stone2_brown0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="stone2_dark0"><div class="stone2_dark0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="stone2_gray0"><div class="stone2_gray0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="stone_gray0"><div class="stone_gray0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="stone_stairs_down"><div class="stone_stairs_down"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="stone_stairs_up"><div class="stone_stairs_up"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="swamp0"><div class="swamp0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="tomb0"><div class="tomb0"></div></button>
+<button onclick="ibus.selectColor(this, event, 'terrain');" title="volcanic_floor0"><div class="volcanic_floor0"></div></button>
+
+</div>
+</div> <!-- /city -->
+</div>
+
+</div><!-- /allterrain< -->
+</div><!-- /panel1 -->
+<div class="subpanel panel2">
+<div class="titleLine bigmenu">
+<button title="Expand Menu" class="expand" onclick="ibus.toggleBigMenu(this, event);">
+<div class="i i-expand"></div>
+</button>
+<button title="Reduce Menu" class="reduce" onclick="ibus.toggleBigMenu(this, event);">
+<div class="i i-reduce"></div>
+</button>
+</div>
+<div class="help">Select an hexagon and add/modify content here.</div>
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'content');">-</button> Content</h2>
+<div class="content panelItem">
+<div class="help">Drag the elements onto each other to move them.</div>
+<div id="contentManager">
+<div class="dragdropper dragdropperIcons">
+<div class="trash dragdrop"></div>
+</div>
+</div>
+</div>
+
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'hexTextPanel');">-</button> Text</h2>
+<div class="hexTextPanel panelItem">
+<div class="help">Display text on the selected hexagon.</div>
+<div id="hexText"></div>
+<div class="preview-container">
+<button onclick="ibus.startEditHexText(this, event);"><div class="i i-pen"></div></button>
+<div id="hex-text-preview"></div>
+</div>
+</div>
+
+<h2><button class="collapse" onclick="ibus.collapse(this, event, 'notesPanel');">-</button> Secret notes</h2>
+<div class="notesPanel panelItem">
+<div class="help">Make "secret" notes about the selected hex here.</div>
+<div id="notes"></div>
+<div class="preview-container">
+<button onclick="ibus.startEditSecretNotes(this, event);"><div class="i i-pen"></div></button>
+<div id="secret-notes-preview"></div>
+</div>
+</div><!-- /content -->
+</div><!-- /panel 2 -->
+<div class="subpanel panel5">
+<div class="help">Select an hex and a submap before adding a link. Then, click on the arrow icon to jump to the submap.</div>
+
+<div class="smartline">
+<button onclick="ibus.addSubmapLinkEvent(this, event);">Add submap link</button>
+<select id="selectedSubmap">
+</select>
+</div>
+
+<br>
+
+<button class="newsubmap-button" onclick="ibus.createSubMapEvent(this, event);">New map</button>
+<h2> Submaps</h2>
+
+<div class="submapsList panelItem">
+<div class="trash dragdrop"></div>
+</div>
+</div>
+
+<div class="hexindicator"></div>
+<div id="readnotes"></div>
+
+<p class="creditsToggle"><a href="#" onclick="ibus.toggleCredits(this, event);">Show/hide credits</a></p>
+
+</div><!-- /panels -->
+</div><!-- /mainpanel -->
+
+</div><!-- /main -->
+
+</div><!-- /page -->
+
+<script src="includes/hextml.min.js?v872941154ce85adcf960c5cb41ec88e81d6dd3d9"></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+setTimeout(function() {
+ga('create', 'UA-106051279-1', 'auto');
+
+if(window.location.protocol == "file:") {
+ga('set', 'location', 'http://hextml.playest.net/file/');
+}
+
+ga('send', 'pageview');
+}, 1000);
+</script>
+
+
+
+
+
+</body><div id="abineFillElement"></div></html>
