@@ -7,7 +7,6 @@
 [node name="World" type="Node2D"]
 
 [node name="Grid" type="YSort" parent="."]
-position = Vector2( 100, 100 )
 script = ExtResource( 1 )
 map = ExtResource( 2 )
 

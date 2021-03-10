@@ -9,14 +9,14 @@ const TILE_SCENES = {
 
 
 func _ready():
-	for x in range(map.get_width()):
-		for y in range(map.get_height()):
+	for y in range(map.get_height()):
+		for x in range(map.get_width()):
 			var tile_type = map.get_tile(x,y)
 			var tile = TILE_SCENES[tile_type].instance()
-			var alternate = false if y%2 == 0 else true
+			var alternate = false if x%2 == 0 else true
 			$WaterTiles.add_child(tile)
 			if alternate:
-				tile.position = Vector2((x*TILE_SIZE-TILE_SIZE*.75) + TILE_SIZE/2*x, y*TILE_SIZE - TILE_SIZE/2)
+				tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE + TILE_SIZE/2)
 			else:
-				tile.position = Vector2(x*TILE_SIZE + TILE_SIZE/2*x, y*TILE_SIZE/2)
+				tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE)
 			
