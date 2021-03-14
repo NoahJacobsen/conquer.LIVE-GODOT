@@ -9,18 +9,4 @@
 script = ExtResource( 1 )
 map = ExtResource( 2 )
 
-[node name="WaterTiles" type="YSort" parent="Grid"]
-
-[node name="BeachTiles" type="YSort" parent="Grid"]
-
-[node name="ForestTiles" type="YSort" parent="Grid"]
-
-[node name="DenseForestTiles" type="YSort" parent="Grid"]
-
-[node name="HillTiles" type="YSort" parent="Grid"]
-
-[node name="MountainTiles" type="YSort" parent="Grid"]
-
-[node name="DesertTiles" type="YSort" parent="Grid"]
-
-[node name="OasisTiles" type="YSort" parent="Grid"]
+[node name="Tiles" type="YSort" parent="Grid"]

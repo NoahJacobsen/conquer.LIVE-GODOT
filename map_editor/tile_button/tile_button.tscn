@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/tiles/rough_tilemap_16x16x2.png" type="Texture" id=1]
+[ext_resource path="res://map_editor/tile_button/tile_button.gd" type="Script" id=2]
+
+[node name="TileButton" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 7.95083, -14.9449, 15.1566, 0.131195, 7.91586, 15.2073, -7.89481, 15.2772, -15.1705, 0.131195, -7.85983, -14.9799 )
