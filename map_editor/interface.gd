@@ -16,6 +16,9 @@ const SPRITE_DATA = {  # These region V2s are calculated based on order of appea
 }
 const BUTTON_SCENE = preload("res://map_editor/tile_button/tile_button.tscn")
 
+var selected_tile = "editor_empty"
+
+
 func _ready():
 	_vertical_generate_buttons()
 
@@ -33,4 +36,8 @@ func _vertical_generate_buttons():
 		# Move the next button below the current one
 		button_position = button_position + Vector2(0,TILE_SIZE)
 
-
+func change_selected(new_tile):
+	if new_tile == selected_tile:
+		return
+	selected_tile = new_tile
+	print("Selected: " + selected_tile)

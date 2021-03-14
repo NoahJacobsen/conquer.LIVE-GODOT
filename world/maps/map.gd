@@ -6,7 +6,16 @@ export(String) var map_name
 export(Array, Array, int) var tile_data
 
 
-const TILE_TYPES = ["water", "beach", "forest", "dense_forest", "hills", "mountains", "desert", "oasis"]
+const TILE_TYPES = [
+	"water",
+	"beach",
+	"forest",
+	"dense_forest",
+	"hills",
+	"mountains",
+	"desert",
+	"oasis"
+]
 
 func get_width():
 	return tile_data.size()
