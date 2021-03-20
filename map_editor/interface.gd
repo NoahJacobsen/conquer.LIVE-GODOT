@@ -15,6 +15,7 @@ const SPRITE_DATA = {  # These region V2s are calculated based on order of appea
 	"oasis"			: Vector2(0,TILE_SIZE*7)
 }
 const BUTTON_SCENE = preload("res://map_editor/tile_button/tile_button.tscn")
+const FIRST_BUTTON_POS = Vector2(32,32)
 
 var selected_tile = "editor_empty"
 
@@ -23,7 +24,7 @@ func _ready():
 	_vertical_generate_buttons()
 
 func _vertical_generate_buttons():
-	var button_position = Vector2(24,24)
+	var button_position = FIRST_BUTTON_POS
 	for data in SPRITE_DATA.keys():
 		# Create and configure new buttons
 		var new_button = BUTTON_SCENE.instance()
@@ -37,6 +38,7 @@ func _vertical_generate_buttons():
 		button_position = button_position + Vector2(0,TILE_SIZE)
 
 func change_selected(new_tile):
+	# Feature idea: Show the currently selected tile
 	if new_tile == selected_tile:
 		return
 	selected_tile = new_tile

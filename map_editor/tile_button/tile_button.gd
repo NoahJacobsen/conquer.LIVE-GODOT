@@ -15,8 +15,11 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		if $Sprite.get_rect().has_point(to_local(event.position)):
-			print("Click: " + tile_type)
-			self.get_parent().get_parent().change_selected(tile_type)
 			$Sprite.modulate = SELECT_COLOR
+			_handle_select(event)
 	else:
 		$Sprite.modulate = Color.white
+
+func _handle_select(event):
+	print("Click: " + tile_type)
+	self.get_parent().get_parent().change_selected(tile_type)

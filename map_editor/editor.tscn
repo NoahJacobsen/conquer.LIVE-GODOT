@@ -5,10 +5,14 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Grid" type="YSort" parent="."]
+[node name="Interface" parent="." instance=ExtResource( 2 )]
+
+[node name="Grid" type="YSort" parent="Interface"]
 script = ExtResource( 1 )
 edit_mode = true
 
-[node name="Tiles" type="YSort" parent="Grid"]
+[node name="Tiles" type="YSort" parent="Interface/Grid"]
 
-[node name="Interface" parent="." instance=ExtResource( 2 )]
+[node name="Buttons" type="Control" parent="Interface"]
+margin_right = 40.0
+margin_bottom = 40.0
