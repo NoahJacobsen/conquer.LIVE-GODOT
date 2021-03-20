@@ -15,6 +15,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		if $Sprite.get_rect().has_point(to_local(event.position)):
+			get_tree().set_input_as_handled()
 			$Sprite.modulate = SELECT_COLOR
 			_handle_select(event)
 	else:

@@ -17,7 +17,7 @@ const SPRITE_DATA = {  # These region V2s are calculated based on order of appea
 const BUTTON_SCENE = preload("res://map_editor/tile_button/tile_button.tscn")
 const FIRST_BUTTON_POS = Vector2(32,32)
 
-var selected_tile = "editor_empty"
+export(String) var selected_tile = "editor_empty"
 
 
 func _ready():
@@ -43,3 +43,15 @@ func change_selected(new_tile):
 		return
 	selected_tile = new_tile
 	print("Selected: " + selected_tile)
+	
+func serialize_tile_data(map_name, path):
+	var grid_size = $Grid.EDITOR_GRID_SIZE
+	var tile_data_raw = $Grid.tile_list
+	var data_keys = tile_data_raw.keys()
+	var data_refined = []
+	for i in range(grid_size):
+		data_refined.append([])
+	for key in data_keys:
+		var index = key.split(":")
+		data_refined[int(index[0])][int(index[1])] = tile_data_raw[key]
+	return data_refined

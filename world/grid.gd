@@ -17,6 +17,7 @@ const TILE_SCENES = {
 }
 const EDITOR_GRID_SIZE = 25
 
+export(Dictionary) var tile_list = {}
 
 func _ready():
 	if edit_mode:
@@ -26,21 +27,30 @@ func _ready():
 			for x in range(map.get_width()):
 				var tile_type = map.get_tile(x,y)
 				var tile = TILE_SCENES[tile_type].instance()
-				var alternate = false if x%2 == 0 else true
-				$Tiles.add_child(tile)
-				if alternate:
-					tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE + TILE_SIZE/2)
-				else:
-					tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE)
-
+				_add_tile(x, y, tile)
 
 func _create_editor_grid():
 	for y in range(EDITOR_GRID_SIZE):
 			for x in range(EDITOR_GRID_SIZE):
 				var tile = TILE_SCENES["editor_empty"].instance()
-				var alternate = false if x%2 == 0 else true
-				$Tiles.add_child(tile)
-				if alternate:
-					tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE + TILE_SIZE/2)
-				else:
-					tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE)
+				_add_tile(x, y, tile)
+
+func _add_tile(x, y, tile):
+	var alternate = false if x%2 == 0 else true
+	var id = String(x) + ":" + String(y)
+	$Tiles.add_child(tile)
+	tile.tile_id = id
+	tile_list[id] = tile.tile_type
+	if alternate:
+		tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE + TILE_SIZE/2)
+	else:
+		tile.position = Vector2(3*x*TILE_SIZE/4, y*TILE_SIZE)
+
+func get_selected_type():
+	if edit_mode:
+		return self.get_parent().selected_tile
+
+func update_tile_type(id, new_type):
+	var tile = TILE_SCENES[new_type].instance()
+	var id_array = id.split(":")
+	_add_tile(int(id_array[0]), int(id_array[1]), tile)
