@@ -16,6 +16,7 @@ const SPRITE_DATA = {  # These region V2s are calculated based on order of appea
 }
 const BUTTON_SCENE = preload("res://map_editor/tile_button/tile_button.tscn")
 const FIRST_BUTTON_POS = Vector2(32,32)
+const BACKGROUND_MARGIN = 4
 
 export(String) var selected_tile = "editor_empty"
 
@@ -36,6 +37,9 @@ func _vertical_generate_buttons():
 		$Buttons.add_child(new_button)
 		# Move the next button below the current one
 		button_position = button_position + Vector2(0,TILE_SIZE)
+	# These next two lines create the "window" look for the tile buttons
+	$TileBackground.set_position(Vector2(FIRST_BUTTON_POS.x - TILE_SIZE/2 - BACKGROUND_MARGIN, FIRST_BUTTON_POS.y - TILE_SIZE/2 - BACKGROUND_MARGIN))
+	$TileBackground.rect_size = Vector2(TILE_SIZE + (BACKGROUND_MARGIN*2), int(button_position.y) - TILE_SIZE + BACKGROUND_MARGIN*2)
 
 func change_selected(new_tile):
 	# Feature idea: Show the currently selected tile
