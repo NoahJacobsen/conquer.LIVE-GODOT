@@ -32,7 +32,7 @@ func _ready():
 func _create_editor_grid():
 	for y in range(EDITOR_GRID_SIZE):
 			for x in range(EDITOR_GRID_SIZE):
-				var tile = TILE_SCENES["editor_empty"].instance()
+				var tile = TILE_SCENES["water"].instance()
 				_add_tile(x, y, tile)
 
 func _add_tile(x, y, tile):
