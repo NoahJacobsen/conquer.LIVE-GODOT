@@ -14,6 +14,7 @@ const BUTTON_DATA = {
 func _ready():
 	_add_button("back")
 
+# Reads BUTTON_DATA and creates a button, connecting signal to a function "func"
 func _add_button(button):
 	var btn = Button.new()
 	btn.name = BUTTON_DATA[button]["name"]

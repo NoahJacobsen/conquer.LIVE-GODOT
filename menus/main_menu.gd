@@ -30,6 +30,7 @@ func _ready():
 	_add_button("game")
 	_add_button("options")
 
+# Reads BUTTON_DATA and creates a button, connecting signal to a function "func"
 func _add_button(button):
 	var btn = Button.new()
 	btn.name = BUTTON_DATA[button]["name"]
