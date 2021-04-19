@@ -57,4 +57,5 @@ ui_click={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.164706, 0.184314, 0.278431, 1 )
 environment/default_environment="res://default_env.tres"
