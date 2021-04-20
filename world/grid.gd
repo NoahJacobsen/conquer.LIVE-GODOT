@@ -15,23 +15,28 @@ const TILE_SCENES = {
 	"oasis": preload("res://objects/tiles/oasis_tile.tscn"),
 	"editor_empty": preload("res://objects/tiles/editor_empty_tile.tscn")
 }
-const EDITOR_GRID_SIZE = 25
+const EDITOR_GRID_SIZE = Vector2(25,25)
+const CAMERA_BOUNDS_MARGIN = 64
 
 export(Dictionary) var tile_list = {}
 
+var grid_size = Vector2(0,0)
+
 func _ready():
 	if edit_mode:
+		grid_size = EDITOR_GRID_SIZE
 		_create_editor_grid()
 	else:
-		for y in range(map.get_height()):
-			for x in range(map.get_width()):
+		grid_size = map.get_size()
+		for y in range(grid_size.y):
+			for x in range(grid_size.x):
 				var tile_type = map.get_tile(x,y)
 				var tile = TILE_SCENES[tile_type].instance()
 				_add_tile(x, y, tile)
 
 func _create_editor_grid():
-	for y in range(EDITOR_GRID_SIZE):
-			for x in range(EDITOR_GRID_SIZE):
+		for y in range(grid_size.y):
+			for x in range(grid_size.x):
 				var tile = TILE_SCENES["water"].instance()
 				_add_tile(x, y, tile)
 
@@ -54,3 +59,6 @@ func update_tile_type(id, new_type):
 	var tile = TILE_SCENES[new_type].instance()
 	var id_array = id.split(":")
 	_add_tile(int(id_array[0]), int(id_array[1]), tile)
+	
+func calculate_camera_bounds():
+	return Rect2(Vector2(-CAMERA_BOUNDS_MARGIN, -CAMERA_BOUNDS_MARGIN), grid_size + Vector2(CAMERA_BOUNDS_MARGIN, CAMERA_BOUNDS_MARGIN)*2)

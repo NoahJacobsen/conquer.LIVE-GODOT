@@ -17,11 +17,9 @@ const TILE_TYPES = [
 	"oasis"
 ]
 
-func get_width():
-	return tile_data.size()
-
-func get_height():
-	return tile_data[0].size()
+	
+func get_size():
+	return Vector2(tile_data.size(), tile_data[0].size())
 
 func get_tile(x, y):
 	var tile = int(tile_data[x][y])  # Returns as a String for some reason

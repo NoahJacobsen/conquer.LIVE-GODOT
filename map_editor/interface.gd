@@ -23,6 +23,7 @@ export(String) var selected_tile = "editor_empty"
 
 func _ready():
 	_vertical_generate_buttons()
+	self.get_parent().get_parent().get_parent().set_camera_bounds($Grid.calculate_camera_bounds())
 
 func _vertical_generate_buttons():
 	var button_position = FIRST_BUTTON_POS

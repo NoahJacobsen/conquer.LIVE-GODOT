@@ -9,6 +9,8 @@ const MENUS = [
 ]
 const HIDE_MENU = "HIDE"
 
+export(Rect2) var camera_bounds = Rect2(0,0,0,0)
+
 var current_menu = "MainMenu"
 
 func _ready():
@@ -23,6 +25,7 @@ func _add_game_space():
 
 # Resets game state, to be used when returning to menu from game or editor
 func reset_state():
+	camera_bounds = Rect2(0,0,0,0)
 	change_menu("MainMenu")
 	$GameSpace.queue_free()
 	_add_game_space()
@@ -51,3 +54,6 @@ func change_menu(menu):
 		get_node(menu).visible = true
 	current_menu = menu
 
+func set_camera_bounds(bounds):
+	camera_bounds = bounds
+	print("Camera bounds set to: ", camera_bounds)
