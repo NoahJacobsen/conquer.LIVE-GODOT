@@ -74,48 +74,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WaterButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Water" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_right = 32.0
 margin_bottom = 32.0
 texture_normal = SubResource( 6 )
 
-[node name="SandButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Beach" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 36.0
 margin_right = 32.0
 margin_bottom = 68.0
 texture_normal = SubResource( 2 )
 
-[node name="ForestButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Forest" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 72.0
 margin_right = 32.0
 margin_bottom = 104.0
 texture_normal = SubResource( 3 )
 
-[node name="DenseForestButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Dense_Forest" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 108.0
 margin_right = 32.0
 margin_bottom = 140.0
 texture_normal = SubResource( 4 )
 
-[node name="HillButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Hill" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 144.0
 margin_right = 32.0
 margin_bottom = 176.0
 texture_normal = SubResource( 5 )
 
-[node name="MountainButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Mountain" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 180.0
 margin_right = 32.0
 margin_bottom = 212.0
 texture_normal = SubResource( 7 )
 
-[node name="DesertButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Desert" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 216.0
 margin_right = 32.0
 margin_bottom = 248.0
 texture_normal = SubResource( 1 )
 
-[node name="OasisButton" type="TextureButton" parent="MarginContainer/Buttons"]
+[node name="Oasis" type="TextureButton" parent="MarginContainer/Buttons"]
 margin_top = 252.0
 margin_right = 32.0
 margin_bottom = 284.0
