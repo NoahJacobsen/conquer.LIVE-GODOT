@@ -45,6 +45,15 @@ func quit_game():
 # MENU FUNCTIONS
 #
 
+# Hides the current menu and reveals the target menu. Can also hide menus when
+#   constant HIDE_MENU is passed
+func change_menu(menu):
+	if current_menu in MENUS:
+		get_node(current_menu).visible = false
+	if menu != HIDE_MENU:
+		get_node(menu).visible = true
+	current_menu = menu
+
 func open_editor():
 	change_menu(HIDE_MENU)
 	print("Opening editor...")
@@ -58,14 +67,7 @@ func open_game():
 	$GameSpace.add_child(game)
 	$GameSpace.visible = true
 
-# Hides the current menu and reveals the target menu. Can also hide menus when
-#   constant HIDE_MENU is passed
-func change_menu(menu):
-	if current_menu in MENUS:
-		get_node(current_menu).visible = false
-	if menu != HIDE_MENU:
-		get_node(menu).visible = true
-	current_menu = menu
+
 
 func set_camera_bounds(bounds):
 	camera_bounds = bounds
