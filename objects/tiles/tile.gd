@@ -22,7 +22,7 @@ func _handle_select(event):
 	var grid = self.get_parent().get_parent()
 	
 	# If in the editor, check the grid for the selected tile type, and replace tile
-	if grid.edit_mode:
+	if grid.editor.edit_mode:
 		var selected = grid.get_selected_type()
 		if tile_type != selected:
 			print("Tile changing to: " + selected)
