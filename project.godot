@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Map",
 "language": "GDScript",
 "path": "res://world/maps/map.gd"
+}, {
+"base": "Resource",
+"class": "TileData",
+"language": "GDScript",
+"path": "res://objects/tiles/resources/tile_resource.gd"
 } ]
 _global_script_class_icons={
-"Map": ""
+"Map": "",
+"TileData": ""
 }
 
 [application]

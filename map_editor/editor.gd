@@ -1,17 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
-const TILE_SCENES = {
-	"water": preload("res://objects/tiles/water_tile.tscn"),
-	"beach": preload("res://objects/tiles/beach_tile.tscn"),
-	"forest": preload("res://objects/tiles/forest_tile.tscn"),
-	"dense_forest": preload("res://objects/tiles/dense_forest_tile.tscn"),
-	"hill": preload("res://objects/tiles/hill_tile.tscn"),
-	"mountain": preload("res://objects/tiles/mountain_tile.tscn"),
-	"desert": preload("res://objects/tiles/desert_tile.tscn"),
-	"oasis": preload("res://objects/tiles/oasis_tile.tscn"),
-	"editor_empty": preload("res://objects/tiles/editor_empty_tile.tscn")
-}
+const TILE_SCENE = preload("res://objects/tiles/tile.tscn")
 const EDITOR_GRID_SIZE = Vector2(25,25)  # Make this changeable later
 
 export(Resource) var map

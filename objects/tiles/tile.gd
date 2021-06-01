@@ -1,6 +1,8 @@
-extends Area2D
+extends TextureButton
 
-const SELECT_COLOR = Color.khaki
+const RESOURCE_REF = {
+	"water": ""
+}
 
 export(String) var tile_id
 export(String) var tile_type
@@ -8,14 +10,6 @@ export(Array, String) var drophash_raw
 export(int) var occupancy
 export(String) var effect_name
 
-func _input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
-		if $Sprite.get_rect().has_point(to_local(event.position)):
-			#get_tree().set_input_as_handled()
-			$Sprite.modulate = SELECT_COLOR
-			_handle_select(event)
-	else:
-		$Sprite.modulate = Color.white
 
 func _handle_select(event):
 	print("Click tile: " + tile_id)
