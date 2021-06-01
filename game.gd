@@ -16,6 +16,11 @@ var current_menu = "MainMenu"
 func _ready():
 	_add_game_space()
 
+
+#
+# CORE FUNCTIONS
+#
+
 # Helper function for deleting current games and editors
 func _add_game_space():
 	var GameSpace = Node2D.new()
@@ -30,7 +35,16 @@ func reset_state():
 	$GameSpace.queue_free()
 	_add_game_space()
 
-# Creates an editor instance and hides the menu (Called from MainMenu)
+# Quits game
+func quit_game():
+	get_tree().quit()
+
+
+
+#
+# MENU FUNCTIONS
+#
+
 func open_editor():
 	change_menu(HIDE_MENU)
 	print("Opening editor...")
@@ -39,7 +53,6 @@ func open_editor():
 	$GameSpace.add_child(editor_instance)
 	$GameSpace.visible = true
 
-# Creates a game instance and hides the menu (Called from GameMenu)
 func open_game():
 	var game = preload(WORLD_SCENE_PATH)
 	$GameSpace.add_child(game)
