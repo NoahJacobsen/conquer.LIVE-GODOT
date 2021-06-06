@@ -3,9 +3,20 @@ extends YSort
 
 const CAMERA_BOUNDS_MARGIN = 64
 
+
 export(Dictionary) var tile_list = {}
 
 onready var editor = get_parent()
+onready var tile_map_atlas = {
+	"water": 		load("res://new_tilemap/atlas/water_atlas.tres"),
+	"beach": 		load("res://new_tilemap/atlas/beach_atlas.tres"),
+	"forest": 		load("res://new_tilemap/atlas/forest_atlas.tres"),
+	"dense_forest": load("res://new_tilemap/atlas/dense_forest_atlas.tres"),
+	"hill": 		load("res://new_tilemap/atlas/hill_atlas.tres"),
+	"mountain": 	load("res://new_tilemap/atlas/mountain_atlas.tres"),
+	"desert": 		load("res://new_tilemap/atlas/desert_atlas.tres"),
+	"oasis": 		load("res://new_tilemap/atlas/oasis_atlas.tres")
+}
 
 var grid_size = Vector2(0,0)
 var tile_size = 0
@@ -27,6 +38,7 @@ func _create_editor_grid():
 	for y in range(grid_size.y):
 		for x in range(grid_size.x):
 			var tile = editor.EDITOR_TILE_SCENE.instance()
+			var _ret = tile.connect("tile_pressed", self, "update_tile")
 			_add_tile(x, y, tile)
 
 func _add_tile(x, y, tile):
@@ -44,8 +56,9 @@ func get_selected_type():
 	if editor.edit_mode:
 		return self.get_parent().selected_tile
 
-func update_tile_type(id, new_type):
-	var tile = editor.TILE_SCENES[new_type].instance()
-	var id_array = id.split(":")
-	_add_tile(int(id_array[0]), int(id_array[1]), tile)
-	
+func update_tile(tile):
+	var new_type = get_selected_type()
+	if tile.type != new_type:
+		tile.type = new_type
+		tile.change_texture(tile_map_atlas[new_type])
+		tile_list[tile.id] = new_type
