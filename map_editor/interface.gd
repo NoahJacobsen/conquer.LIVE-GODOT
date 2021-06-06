@@ -2,7 +2,7 @@ extends NinePatchRect
 
 export(Texture) var tile_map
 
-onready var editor = get_parent()
+onready var editor = get_parent().get_parent()
 
 func _ready():
 	for button in $MarginContainer/Buttons.get_children():

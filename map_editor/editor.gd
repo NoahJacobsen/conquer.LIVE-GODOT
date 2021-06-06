@@ -12,6 +12,7 @@ onready var tile_map_atlas = game_controller.tile_map_atlas
 onready var grid = $Grid
 
 var selected_tile = "water"
+var interface_focused = false
 
 func _ready():
 	grid.tile_size = TILE_SIZE
@@ -31,4 +32,36 @@ func serialize_tile_data(map_name, path):
 	return data_refined
 
 func update_handle():
-	$InterfaceHandle.texture = tile_map_atlas[selected_tile]
+	$UILayer/InterfaceHandle.texture = tile_map_atlas[selected_tile]
+
+
+func _on_InterfaceHandle_mouse_entered():
+	if not interface_focused:
+		focus_interface()
+
+func focus_interface():
+	interface_focused = true
+	# Lerp or animate the switch here
+	$UILayer/Interface.rect_position = $UILayer/InterfaceFocusPos.position
+	$UILayer/InterfaceHandle.rect_position = $UILayer/HandleHidePos.position
+	# Lerp above this
+	$UIFocusTimer.start()
+
+func hide_interface():
+	interface_focused = false
+	# Lerp this
+	$UILayer/Interface.rect_position = $UILayer/InterfaceHidePos.position
+	$UILayer/InterfaceHandle.rect_position = $UILayer/HandleFocusPos.position
+	# Lerp above
+
+func _on_UIFocusTimer_timeout():
+	print("Timeout")
+	#Something wrong with checking if mouse in the rect
+	if interface_focused && $UILayer/Interface.get_rect().has_point(get_viewport().get_mouse_position()):
+		pass
+	else:
+		hide_interface()
+
+
+func _on_Interface_mouse_exited():
+	$UIFocusTimer.start()
