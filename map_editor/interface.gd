@@ -18,4 +18,5 @@ func change_selected(new_tile):
 		return
 	editor.selected_tile = new_tile
 	print("Selected: " + editor.selected_tile)
+	editor.update_handle()
 	

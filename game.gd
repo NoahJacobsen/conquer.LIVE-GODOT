@@ -11,6 +11,17 @@ const HIDE_MENU = "HIDE"
 
 export(Rect2) var camera_bounds = Rect2(0,0,0,0)
 
+onready var tile_map_atlas = {
+	"water": 		load("res://new_tilemap/atlas/water_atlas.tres"),
+	"beach": 		load("res://new_tilemap/atlas/beach_atlas.tres"),
+	"forest": 		load("res://new_tilemap/atlas/forest_atlas.tres"),
+	"dense_forest": load("res://new_tilemap/atlas/dense_forest_atlas.tres"),
+	"hill": 		load("res://new_tilemap/atlas/hill_atlas.tres"),
+	"mountain": 	load("res://new_tilemap/atlas/mountain_atlas.tres"),
+	"desert": 		load("res://new_tilemap/atlas/desert_atlas.tres"),
+	"oasis": 		load("res://new_tilemap/atlas/oasis_atlas.tres")
+}
+
 var current_menu = "MainMenu"
 
 func _ready():

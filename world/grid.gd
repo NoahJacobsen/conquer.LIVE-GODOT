@@ -7,16 +7,6 @@ const CAMERA_BOUNDS_MARGIN = 64
 export(Dictionary) var tile_list = {}
 
 onready var editor = get_parent()
-onready var tile_map_atlas = {
-	"water": 		load("res://new_tilemap/atlas/water_atlas.tres"),
-	"beach": 		load("res://new_tilemap/atlas/beach_atlas.tres"),
-	"forest": 		load("res://new_tilemap/atlas/forest_atlas.tres"),
-	"dense_forest": load("res://new_tilemap/atlas/dense_forest_atlas.tres"),
-	"hill": 		load("res://new_tilemap/atlas/hill_atlas.tres"),
-	"mountain": 	load("res://new_tilemap/atlas/mountain_atlas.tres"),
-	"desert": 		load("res://new_tilemap/atlas/desert_atlas.tres"),
-	"oasis": 		load("res://new_tilemap/atlas/oasis_atlas.tres")
-}
 
 var grid_size = Vector2(0,0)
 var tile_size = 0
@@ -60,5 +50,5 @@ func update_tile(tile):
 	var new_type = get_selected_type()
 	if tile.type != new_type:
 		tile.type = new_type
-		tile.change_texture(tile_map_atlas[new_type])
+		tile.change_texture(editor.tile_map_atlas[new_type])
 		tile_list[tile.id] = new_type
