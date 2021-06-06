@@ -15,29 +15,30 @@ func generate_grid():
 		grid_size = editor.EDITOR_GRID_SIZE
 		_create_editor_grid()
 	else:
-		grid_size = editor.map.get_size()
-		for y in range(grid_size.y):
-			for x in range(grid_size.x):
-				var tile_type = editor.map.get_tile(x,y)
-				var tile = editor.TILE_SCENES[tile_type].instance()
-				_add_tile(x, y, tile)
+		pass
+#		grid_size = editor.map.get_size()
+#		for y in range(grid_size.y):
+#			for x in range(grid_size.x):
+#				var tile_type = editor.map.get_tile(x,y)
+#				var tile = editor.TILE_SCENES[tile_type].instance()
+#				_add_tile(x, y, tile)
 
 func _create_editor_grid():
-		for y in range(grid_size.y):
-			for x in range(grid_size.x):
-				var tile = editor.TILE_SCENES["water"].instance()
-				_add_tile(x, y, tile)
+	for y in range(grid_size.y):
+		for x in range(grid_size.x):
+			var tile = editor.EDITOR_TILE_SCENE.instance()
+			_add_tile(x, y, tile)
 
 func _add_tile(x, y, tile):
 	var alternate = false if x%2 == 0 else true
 	var id = String(x) + ":" + String(y)
 	$Tiles.add_child(tile)
-	tile.tile_id = id
-	tile_list[id] = tile.tile_type
+	tile.id = id
+	tile_list[id] = tile.type
 	if alternate:
-		tile.position = Vector2(3*x*tile_size/4, y*tile_size + tile_size/2)
+		tile.move(Vector2(3*x*tile_size/4, y*tile_size + tile_size/2))
 	else:
-		tile.position = Vector2(3*x*tile_size/4, y*tile_size)
+		tile.move(Vector2(3*x*tile_size/4, y*tile_size))
 
 func get_selected_type():
 	if editor.edit_mode:

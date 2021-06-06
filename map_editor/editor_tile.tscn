@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://new_tilemap/tile_map_32x32.png" type="Texture" id=1]
+[ext_resource path="res://map_editor/editor_tile.gd" type="Script" id=2]
+[ext_resource path="res://new_tilemap/tile_map_click_bitmap.bmp" type="BitMap" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[node name="EditorTile" type="TextureButton"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture_normal = SubResource( 1 )
+texture_click_mask = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="." to="." method="_on_EditorTile_pressed"]

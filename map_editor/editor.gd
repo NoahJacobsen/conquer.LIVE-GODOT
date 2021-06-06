@@ -1,7 +1,7 @@
 extends Node2D
 
 const TILE_SIZE = 32
-const TILE_SCENE = preload("res://objects/tiles/tile.tscn")
+const EDITOR_TILE_SCENE = preload("res://map_editor/editor_tile.tscn")
 const EDITOR_GRID_SIZE = Vector2(25,25)  # Make this changeable later
 
 export(Resource) var map
