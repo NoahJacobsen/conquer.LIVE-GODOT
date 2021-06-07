@@ -42,16 +42,18 @@ func _on_InterfaceHandle_mouse_entered():
 func focus_interface():
 	interface_focused = true
 	# Lerp or animate the switch here
-	$UILayer/Interface.rect_position = $UILayer/InterfaceFocusPos.position
-	$UILayer/InterfaceHandle.rect_position = $UILayer/HandleHidePos.position
+	$InterfaceAnimations.play("ShowInterface")
+	#$UILayer/Interface.rect_position = $UILayer/InterfaceFocusPos.position
+	#$UILayer/InterfaceHandle.rect_position = $UILayer/HandleHidePos.position
 	# Lerp above this
 	$UIFocusTimer.start()
 
 func hide_interface():
 	interface_focused = false
 	# Lerp this
-	$UILayer/Interface.rect_position = $UILayer/InterfaceHidePos.position
-	$UILayer/InterfaceHandle.rect_position = $UILayer/HandleFocusPos.position
+	$InterfaceAnimations.play("HideInterface")
+	#$UILayer/Interface.rect_position = $UILayer/InterfaceHidePos.position
+	#$UILayer/InterfaceHandle.rect_position = $UILayer/HandleFocusPos.position
 	# Lerp above
 
 func _on_UIFocusTimer_timeout():
@@ -64,4 +66,5 @@ func _on_UIFocusTimer_timeout():
 
 
 func _on_Interface_mouse_exited():
+	print("exited") # Figure out why this doesnt trigger
 	$UIFocusTimer.start()
