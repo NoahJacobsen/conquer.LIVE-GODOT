@@ -41,6 +41,7 @@ region = Rect2( 256, 0, 32, 32 )
 [node name="Interface" type="NinePatchRect"]
 margin_right = 44.0
 margin_bottom = 306.0
+mouse_filter = 0
 size_flags_horizontal = 4
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 48, 48 )
@@ -58,6 +59,7 @@ tile_map = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 2
+mouse_filter = 2
 size_flags_vertical = 4
 __meta__ = {
 "_edit_use_anchors_": false

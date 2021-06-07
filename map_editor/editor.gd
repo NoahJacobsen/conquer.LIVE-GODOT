@@ -66,5 +66,5 @@ func _on_UIFocusTimer_timeout():
 
 
 func _on_Interface_mouse_exited():
-	print("exited") # Figure out why this doesnt trigger
 	$UIFocusTimer.start()
+
