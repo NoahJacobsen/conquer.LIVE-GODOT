@@ -45,6 +45,7 @@ func _on_InterfaceHandle_mouse_entered():
 
 func focus_interface():
 	interface_focused = true
+	$UILayer/Interface.find_and_select_type()
 	$InterfaceAnimations.play("ShowInterface")
 	$UIFocusTimer.start()
 
