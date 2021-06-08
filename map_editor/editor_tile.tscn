@@ -11,6 +11,7 @@ region = Rect2( 32, 0, 32, 32 )
 [node name="EditorTile" type="TextureButton"]
 margin_right = 32.0
 margin_bottom = 32.0
+button_mask = 3
 texture_normal = SubResource( 1 )
 texture_click_mask = ExtResource( 3 )
 expand = true
@@ -19,4 +20,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="gui_input" from="." to="." method="_on_EditorTile_gui_input"]
 [connection signal="pressed" from="." to="." method="_on_EditorTile_pressed"]

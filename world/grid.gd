@@ -29,6 +29,7 @@ func _create_editor_grid():
 		for x in range(grid_size.x):
 			var tile = editor.EDITOR_TILE_SCENE.instance()
 			var _ret = tile.connect("tile_pressed", self, "update_tile")
+			_ret = tile.connect("tile_copied", editor, "copy_type")
 			_add_tile(x, y, tile)
 
 func _add_tile(x, y, tile):
@@ -52,3 +53,4 @@ func update_tile(tile):
 		tile.type = new_type
 		tile.change_texture(editor.tile_map_atlas[new_type])
 		tile_list[tile.id] = new_type
+

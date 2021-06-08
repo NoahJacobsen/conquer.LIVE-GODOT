@@ -26,3 +26,8 @@ func change_selected(new_tile):
 
 func move_selected(new_pos):
 	$MarginContainer/SelectedTexture.rect_position.y = new_pos.y + BUTTON_POS_OFFSET
+
+func find_and_select_type():
+	for button in $MarginContainer/Buttons.get_children():
+		if button.name.to_lower() == editor.selected_tile:
+			move_selected(button.rect_position)
