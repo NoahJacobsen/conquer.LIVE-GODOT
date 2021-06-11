@@ -1,5 +1,8 @@
 extends Node
 
+
+const MAP_SAVE_PATH = "user://maps/"
+const MAP_DEFAULTS_PATH = "res://world/maps/defaults/"
 const WORLD_SCENE_PATH  = "res://world/world.tscn"
 const EDITOR_SCENE_PATH = "res://map_editor/editor.tscn"
 const MENUS = [
@@ -26,7 +29,6 @@ var current_menu = "MainMenu"
 
 func _ready():
 	_add_game_space()
-
 
 #
 # CORE FUNCTIONS
@@ -83,3 +85,25 @@ func open_game():
 func set_camera_bounds(bounds):
 	camera_bounds = bounds
 	print("Camera bounds set to: ", camera_bounds)
+
+
+
+#
+# SAVE FUNCTIONS
+#
+func verify_map_dir():
+	var dir = Directory.new()
+	if not dir.dir_exists(MAP_SAVE_PATH):
+		print(MAP_SAVE_PATH, " does not exist, creating...")
+		dir.make_dir_recursive(MAP_SAVE_PATH)
+		# As map dir hasn't existed yet, install default maps
+		print("Installing default maps...")
+		dir.change_dir(MAP_DEFAULTS_PATH)
+		var ret = dir.list_dir_begin(true)
+		while true:
+			var default = dir.get_next()
+			if not default:
+				break  # The stream has been closed
+			print("Adding map: ", default)
+			dir.copy(MAP_DEFAULTS_PATH + default, MAP_SAVE_PATH + default)
+	return MAP_SAVE_PATH

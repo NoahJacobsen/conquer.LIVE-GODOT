@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-map_name = ""
+name = ""
 tile_data = [ [ "0", 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0 ] ]
+default = false

@@ -19,13 +19,16 @@ func _ready():
 	grid.generate_grid()
 
 
-func serialize_tile_data(map_name, path):
-	var grid_size = $Grid.EDITOR_GRID_SIZE
+func serialize_tile_data():
+	var grid_size = EDITOR_GRID_SIZE
 	var tile_data_raw = $Grid.tile_list
 	var data_keys = tile_data_raw.keys()
 	var data_refined = []
-	for i in range(grid_size):
-		data_refined.append([])
+	for i in range(grid_size.x):
+		var row = []
+		for j in range(grid_size.y):
+			row.append([])
+		data_refined.append(row)
 	for key in data_keys:
 		var index = key.split(":")
 		data_refined[int(index[0])][int(index[1])] = tile_data_raw[key]
@@ -67,3 +70,18 @@ func copy_type(type):
 	update_handle()
 	$UILayer/Interface.find_and_select_type()
 
+func _on_SaveButton_pressed():
+	var map_name = "example_map" # GET FROM TEXT INPUT BOX
+	var file_name = map_name + ".tres"
+	if not file_name.is_valid_filename():
+		print("Invalid file name. Cannot save resource.")
+		return
+	var file_path = game_controller.verify_map_dir() + file_name
+	# Ask to overwrite if file exists
+	var map_res = Map.new()
+	map_res.tile_data = serialize_tile_data()
+	map_res.name = map_name
+	map_res.default = false
+	print("Saving map [", map_name, "] to [", file_path, "]...")
+	var ret = ResourceSaver.save(file_path, map_res)
+	print("Save complete with code: ", ret)
