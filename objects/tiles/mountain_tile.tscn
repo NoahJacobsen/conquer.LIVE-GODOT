@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://objects/tiles/tile.tscn" type="PackedScene" id=1]
-
-[node name="Tile" instance=ExtResource( 1 )]
-tile_type = "mountain"
-
-[node name="Sprite" parent="." index="0"]
-region_rect = Rect2( 0, 160, 32, 32 )

@@ -2,5 +2,26 @@
 
 [ext_resource path="res://menus/options_menu.gd" type="Script" id=1]
 
-[node name="OptionsMenu" type="Node2D"]
+[node name="OptionsMenu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 429.0
+margin_top = 540.0
+margin_right = 554.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 125, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

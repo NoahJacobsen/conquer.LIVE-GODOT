@@ -2,5 +2,67 @@
 
 [ext_resource path="res://menus/main_menu.gd" type="Script" id=1]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rows" type="VBoxContainer" parent="."]
+margin_right = 984.0
+margin_bottom = 560.0
+grow_horizontal = 0
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="Rows"]
+margin_right = 984.0
+margin_bottom = 14.0
+text = "conquer.LIVE"
+align = 1
+
+[node name="GameButton" type="Button" parent="Rows"]
+margin_left = 392.0
+margin_top = 34.0
+margin_right = 592.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="EditorButton" type="Button" parent="Rows"]
+margin_left = 392.0
+margin_top = 74.0
+margin_right = 592.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+text = "Open Editor"
+
+[node name="OptionsButton" type="Button" parent="Rows"]
+margin_left = 392.0
+margin_top = 114.0
+margin_right = 592.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="Rows"]
+margin_left = 429.0
+margin_top = 154.0
+margin_right = 554.0
+margin_bottom = 174.0
+rect_min_size = Vector2( 125, 0 )
+size_flags_horizontal = 4
+text = "Exit"
+
+[connection signal="pressed" from="Rows/GameButton" to="." method="_on_GameButton_pressed"]
+[connection signal="pressed" from="Rows/EditorButton" to="." method="_on_EditorButton_pressed"]
+[connection signal="pressed" from="Rows/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Rows/ExitButton" to="." method="_on_ExitButton_pressed"]

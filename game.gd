@@ -11,10 +11,26 @@ const HIDE_MENU = "HIDE"
 
 export(Rect2) var camera_bounds = Rect2(0,0,0,0)
 
+onready var tile_map_atlas = {
+	"water": 		load("res://new_tilemap/atlas/water_atlas.tres"),
+	"beach": 		load("res://new_tilemap/atlas/beach_atlas.tres"),
+	"forest": 		load("res://new_tilemap/atlas/forest_atlas.tres"),
+	"dense_forest": load("res://new_tilemap/atlas/dense_forest_atlas.tres"),
+	"hill": 		load("res://new_tilemap/atlas/hill_atlas.tres"),
+	"mountain": 	load("res://new_tilemap/atlas/mountain_atlas.tres"),
+	"desert": 		load("res://new_tilemap/atlas/desert_atlas.tres"),
+	"oasis": 		load("res://new_tilemap/atlas/oasis_atlas.tres")
+}
+
 var current_menu = "MainMenu"
 
 func _ready():
 	_add_game_space()
+
+
+#
+# CORE FUNCTIONS
+#
 
 # Helper function for deleting current games and editors
 func _add_game_space():
@@ -30,20 +46,15 @@ func reset_state():
 	$GameSpace.queue_free()
 	_add_game_space()
 
-# Creates an editor instance and hides the menu (Called from MainMenu)
-func open_editor():
-	change_menu(HIDE_MENU)
-	print("Opening editor...")
-	var editor = preload(EDITOR_SCENE_PATH)
-	var editor_instance = editor.instance()
-	$GameSpace.add_child(editor_instance)
-	$GameSpace.visible = true
+# Quits game
+func quit_game():
+	get_tree().quit()
 
-# Creates a game instance and hides the menu (Called from GameMenu)
-func open_game():
-	var game = preload(WORLD_SCENE_PATH)
-	$GameSpace.add_child(game)
-	$GameSpace.visible = true
+
+
+#
+# MENU FUNCTIONS
+#
 
 # Hides the current menu and reveals the target menu. Can also hide menus when
 #   constant HIDE_MENU is passed
@@ -53,6 +64,21 @@ func change_menu(menu):
 	if menu != HIDE_MENU:
 		get_node(menu).visible = true
 	current_menu = menu
+
+func open_editor():
+	change_menu(HIDE_MENU)
+	print("Opening editor...")
+	var editor = preload(EDITOR_SCENE_PATH)
+	var editor_instance = editor.instance()
+	$GameSpace.add_child(editor_instance)
+	$GameSpace.visible = true
+
+func open_game():
+	var game = preload(WORLD_SCENE_PATH)
+	$GameSpace.add_child(game)
+	$GameSpace.visible = true
+
+
 
 func set_camera_bounds(bounds):
 	camera_bounds = bounds
