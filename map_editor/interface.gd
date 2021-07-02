@@ -2,7 +2,7 @@ extends NinePatchRect
 
 export(Texture) var tile_map
 
-const BUTTON_POS_OFFSET = 11  # Not sure why it's offset, but this is how far off it is
+const BUTTON_POS_OFFSET = 0  # Not sure why it's offset, but this is how far off it is
 
 onready var editor = get_parent().get_parent()
 
