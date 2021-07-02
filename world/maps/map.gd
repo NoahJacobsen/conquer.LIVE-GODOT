@@ -4,6 +4,7 @@ class_name Map
 
 export(String) var name
 export(Array, Array, int) var tile_data
+export(Dictionary) var flags
 export(bool) var default
 
 const TILE_TYPES = [

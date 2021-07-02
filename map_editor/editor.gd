@@ -32,7 +32,10 @@ func serialize_tile_data():
 	for key in data_keys:
 		var index = key.split(":")
 		data_refined[int(index[0])][int(index[1])] = tile_data_raw[key]
-	return data_refined
+	return {
+		"tiles": data_refined, 
+		"flags": $Grid.flagged_tiles
+		}
 
 
 #
@@ -79,7 +82,9 @@ func _on_SaveButton_pressed():
 	var file_path = game_controller.verify_map_dir() + file_name
 	# Ask to overwrite if file exists
 	var map_res = Map.new()
-	map_res.tile_data = serialize_tile_data()
+	var data = serialize_tile_data()
+	map_res.tile_data = data["tiles"]
+	map_res.flags = data["flags"]
 	map_res.name = map_name
 	map_res.default = false
 	print("Saving map [", map_name, "] to [", file_path, "]...")

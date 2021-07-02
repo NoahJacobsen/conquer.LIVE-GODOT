@@ -22,7 +22,8 @@ onready var tile_map_atlas = {
 	"hill": 		load("res://new_tilemap/atlas/hill_atlas.tres"),
 	"mountain": 	load("res://new_tilemap/atlas/mountain_atlas.tres"),
 	"desert": 		load("res://new_tilemap/atlas/desert_atlas.tres"),
-	"oasis": 		load("res://new_tilemap/atlas/oasis_atlas.tres")
+	"oasis": 		load("res://new_tilemap/atlas/oasis_atlas.tres"),
+	"flag":			load("res://new_tilemap/atlas/flag_atlas.tres")
 }
 
 var current_menu = "MainMenu"
