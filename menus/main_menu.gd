@@ -1,6 +1,12 @@
 extends MarginContainer
 
 
+func reveal():
+	self.show()
+
+func obscure():
+	self.hide()
+
 func _on_GameButton_pressed():
 	self.get_parent().change_menu("GameMenu")
 

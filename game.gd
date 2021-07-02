@@ -62,9 +62,9 @@ func quit_game():
 #   constant HIDE_MENU is passed
 func change_menu(menu):
 	if current_menu in MENUS:
-		get_node(current_menu).visible = false
+		get_node(current_menu).obscure()
 	if menu != HIDE_MENU:
-		get_node(menu).visible = true
+		get_node(menu).reveal()
 	current_menu = menu
 
 func open_editor():
