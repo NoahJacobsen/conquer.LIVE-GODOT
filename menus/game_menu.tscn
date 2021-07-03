@@ -21,13 +21,14 @@ custom_constants/separation = 75
 alignment = 1
 
 [node name="Menus" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 210.0
+margin_top = 132.0
 margin_right = 984.0
-margin_bottom = 254.0
+margin_bottom = 332.0
 
 [node name="GameChoice" type="VBoxContainer" parent="VBoxContainer/Menus"]
+visible = false
 margin_right = 984.0
-margin_bottom = 44.0
+margin_bottom = 200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -51,7 +52,6 @@ size_flags_horizontal = 4
 text = "Join a game"
 
 [node name="HostSettings" type="HBoxContainer" parent="VBoxContainer/Menus"]
-visible = false
 margin_right = 984.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
@@ -61,8 +61,8 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Menus/HostSettings"]
-margin_left = 361.0
-margin_right = 536.0
+margin_left = 302.0
+margin_right = 477.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 175, 120 )
 size_flags_horizontal = 4
@@ -114,27 +114,37 @@ rect_min_size = Vector2( 175, 0 )
 text = "map6"
 
 [node name="HostControls" type="VBoxContainer" parent="VBoxContainer/Menus/HostSettings"]
-margin_left = 540.0
-margin_right = 622.0
+margin_left = 481.0
+margin_right = 681.0
 margin_bottom = 200.0
+custom_constants/separation = 20
 
 [node name="MapName" type="Label" parent="VBoxContainer/Menus/HostSettings/HostControls"]
-margin_right = 82.0
+margin_right = 200.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 200, 0 )
 text = "Select a map"
+
+[node name="Confirm" type="Button" parent="VBoxContainer/Menus/HostSettings/HostControls"]
+margin_top = 34.0
+margin_right = 80.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 0
+text = "Host"
 
 [node name="JoinSettings" type="Label" parent="VBoxContainer/Menus"]
 visible = false
-margin_top = 15.0
+margin_top = 93.0
 margin_right = 984.0
-margin_bottom = 29.0
+margin_bottom = 107.0
 text = "PLACEHOLDER"
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 margin_left = 429.0
-margin_top = 329.0
+margin_top = 407.0
 margin_right = 554.0
-margin_bottom = 349.0
+margin_bottom = 427.0
 rect_min_size = Vector2( 125, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -142,4 +152,5 @@ text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/Menus/GameChoice/Host" to="." method="_on_Host_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menus/GameChoice/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menus/HostSettings/HostControls/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

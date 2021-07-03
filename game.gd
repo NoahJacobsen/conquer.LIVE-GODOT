@@ -108,3 +108,8 @@ func verify_map_dir():
 			print("Adding map: ", default)
 			dir.copy(MAP_DEFAULTS_PATH + default, MAP_SAVE_PATH + default)
 	return MAP_SAVE_PATH
+
+func load_map(map):
+	var path = MAP_SAVE_PATH + map + ".tres"
+	print("Using path: ", path)
+	return ResourceLoader.load(path, "Map")
