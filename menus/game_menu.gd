@@ -27,14 +27,14 @@ func show_menu(menu):
 		"join":
 			if cur_menu != "join":
 				menu_main.hide()
-				menu_join.show()
 				menu_host.hide()
+				menu_join.show()
 				cur_menu = "join"
 		"main":
 			if cur_menu != "main":
-				menu_main.show()
 				menu_join.hide()
 				menu_host.hide()
+				menu_main.show()
 				cur_menu = "main"
 
 func refresh_map_list():
