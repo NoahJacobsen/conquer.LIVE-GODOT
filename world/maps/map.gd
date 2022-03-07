@@ -2,17 +2,18 @@ extends Resource
 class_name Map
 
 
-export(String) var map_name
+export(String) var name
 export(Array, Array, int) var tile_data
-
+export(Dictionary) var flags
+export(bool) var default
 
 const TILE_TYPES = [
 	"water",
 	"beach",
 	"forest",
 	"dense_forest",
-	"hills",
-	"mountains",
+	"hill",
+	"mountain",
 	"desert",
 	"oasis"
 ]

@@ -10,6 +10,7 @@ onready var editor = get_parent()
 
 var grid_size = Vector2(0,0)
 var tile_size = 0
+var flagged_tiles = {}
 
 func generate_grid():
 	if editor.edit_mode:
@@ -30,6 +31,7 @@ func _create_editor_grid():
 			var tile = editor.EDITOR_TILE_SCENE.instance()
 			var _ret = tile.connect("tile_pressed", self, "update_tile")
 			_ret = tile.connect("tile_copied", editor, "copy_type")
+			_ret = tile.connect("toggled_flag", self, "update_flags")
 			_add_tile(x, y, tile)
 
 func _add_tile(x, y, tile):
@@ -49,8 +51,12 @@ func get_selected_type():
 
 func update_tile(tile):
 	var new_type = get_selected_type()
-	if tile.type != new_type:
+	if new_type == "flag":
+		tile.toggle_flag()
+	elif tile.type != new_type:
 		tile.type = new_type
 		tile.change_texture(editor.tile_map_atlas[new_type])
 		tile_list[tile.id] = new_type
 
+func update_flags(id, flagged):
+	flagged_tiles[id] = flagged

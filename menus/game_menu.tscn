@@ -14,14 +14,143 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" type="Button" parent="."]
-margin_left = 429.0
-margin_top = 540.0
-margin_right = 554.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 984.0
 margin_bottom = 560.0
+custom_constants/separation = 75
+alignment = 1
+
+[node name="Menus" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 984.0
+margin_bottom = 332.0
+
+[node name="GameChoice" type="VBoxContainer" parent="VBoxContainer/Menus"]
+visible = false
+margin_right = 984.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Host" type="Button" parent="VBoxContainer/Menus/GameChoice"]
+margin_left = 429.0
+margin_right = 554.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 125, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Host a game"
+
+[node name="Join" type="Button" parent="VBoxContainer/Menus/GameChoice"]
+margin_left = 429.0
+margin_top = 24.0
+margin_right = 554.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 125, 0 )
+size_flags_horizontal = 4
+text = "Join a game"
+
+[node name="HostSettings" type="HBoxContainer" parent="VBoxContainer/Menus"]
+margin_right = 984.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Menus/HostSettings"]
+margin_left = 302.0
+margin_right = 477.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 175, 120 )
+size_flags_horizontal = 4
+scroll_horizontal_enabled = false
+
+[node name="MapButtons" type="VBoxContainer" parent="VBoxContainer/Menus/HostSettings/ScrollContainer"]
+margin_right = 175.0
+margin_bottom = 140.0
+
+[node name="Button" type="Button" parent="VBoxContainer/Menus/HostSettings/ScrollContainer/MapButtons"]
+margin_right = 175.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 175, 0 )
+text = "map1"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Menus/HostSettings/ScrollContainer/MapButtons"]
+margin_top = 24.0
+margin_right = 175.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 175, 0 )
+text = "map2"
+
+[node name="Button3" type="Button" parent="VBoxContainer/Menus/HostSettings/ScrollContainer/MapButtons"]
+margin_top = 48.0
+margin_right = 175.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 175, 0 )
+text = "map3"
+
+[node name="Button4" type="Button" parent="VBoxContainer/Menus/HostSettings/ScrollContainer/MapButtons"]
+margin_top = 72.0
+margin_right = 175.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 175, 0 )
+text = "map4"
+
+[node name="Button5" type="Button" parent="VBoxContainer/Menus/HostSettings/ScrollContainer/MapButtons"]
+margin_top = 96.0
+margin_right = 175.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 175, 0 )
+text = "map5"
+
+[node name="Button6" type="Button" parent="VBoxContainer/Menus/HostSettings/ScrollContainer/MapButtons"]
+margin_top = 120.0
+margin_right = 175.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 175, 0 )
+text = "map6"
+
+[node name="HostControls" type="VBoxContainer" parent="VBoxContainer/Menus/HostSettings"]
+margin_left = 481.0
+margin_right = 681.0
+margin_bottom = 200.0
+custom_constants/separation = 20
+
+[node name="MapName" type="Label" parent="VBoxContainer/Menus/HostSettings/HostControls"]
+margin_right = 200.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 200, 0 )
+text = "Select a map"
+
+[node name="Confirm" type="Button" parent="VBoxContainer/Menus/HostSettings/HostControls"]
+margin_top = 34.0
+margin_right = 80.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 0
+text = "Host"
+
+[node name="JoinSettings" type="Label" parent="VBoxContainer/Menus"]
+visible = false
+margin_top = 93.0
+margin_right = 984.0
+margin_bottom = 107.0
+text = "PLACEHOLDER"
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+margin_left = 429.0
+margin_top = 407.0
+margin_right = 554.0
+margin_bottom = 427.0
 rect_min_size = Vector2( 125, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Back"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menus/GameChoice/Host" to="." method="_on_Host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menus/GameChoice/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menus/HostSettings/HostControls/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
